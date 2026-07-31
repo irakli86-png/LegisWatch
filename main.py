@@ -4,6 +4,10 @@ from api_client import get_bills
 create_table()
 bills = get_bills()
 
-
+for option in bills:
+    insert_bill(
+        option["id"],
+        option["billName"]
+    )
 
 
