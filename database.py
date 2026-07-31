@@ -42,7 +42,3 @@ def insert_bill(bill_id,bill_name):
     
 
 create_table()
-
-    
-
-create_table()
