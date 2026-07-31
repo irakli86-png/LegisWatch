@@ -16,6 +16,19 @@ def create_table():
 
     conn.commit()
 
+    def bill_exists(bill_id):
+        conn = sqlite3.connect('legiswatch.db')
+        cursor = conn.cursor()
+        
+        cursor.execute("""SELECT * FROM bills WHERE bill_id =?""", (bill_id,))
+
+        result = cursor.fetchone()
+        conn.close()
+        if result is None:
+            return False
+        else:
+            return True
+
 
 
     
