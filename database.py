@@ -64,11 +64,17 @@ def insert_bill(bill_id, bill_name):
             VALUES (?, ?)
             """,(bill_id, bill_name)
         )
-
-        
+              
         conn.commit()
         conn.close()
+
+        return True
+    else:
+        return False
+
 
 
 # პროგრამის გაშვებისას bills ცხრილის შექმნა
 create_table()
+
+                
