@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+.env
+brevo-smtp.txt
