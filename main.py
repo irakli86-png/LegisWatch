@@ -1,55 +1,97 @@
-# ეს ფუნქცია აკეთებს მონაცემთა ბაზის ფუნქციების იმპორტს
+from fastapi import FastAPI
+
+# მონაცემთა ბაზის ფუნქციების იმპორტი
 from database import create_table, insert_bill
 
-# ეს კი პარლამენტის API დან მონაცემების ფუნქციის იმპორტს
+# პარლამენტის API-დან მონაცემების ფუნქციის იმპორტი
 from api_client import get_bills
 
-# --------------------------------------------------
+# Email ფუნქციის იმპორტი
 from email_sender import send_email
 
-#ცხრილის შექმნის ფუნქცია
-create_table()
 
-# API დან მონაცემების მიღება
-bills = get_bills()
+# --------------------------------------------------
+# FastAPI application
+# --------------------------------------------------
 
-
-# ეს იქნება სია ლისტის სახით სადაც შევინახავ მხოლოდ ახალ კანონპროექტებს რომელიც ბაზაში არაა
-new_bills = []
+app = FastAPI(title="LegisWatch")
 
 
-# ეს არის ახალი ცვლადი სადაც შევაგროვებთ email ზე გასაგზავნ ტექსტდს
-email_message = ""
+# მთავარი გვერდი
+@app.get("/")
+def home():
+    return {
+        "message": "LegisWatch is running"
+    }
 
-# მირებული კანონპროექტის ციკლით დამუშავება
-for option in bills:
-    # კანონპროექტის მონაცემთა ბაზაში დამატება და პარალელურად ცვლადში შენახვა
-    was_saved = insert_bill(
-                option["id"],
-                option["billName"]
+
+# --------------------------------------------------
+# LegisWatch-ის ავტომატიზაციის ფუნქცია
+# --------------------------------------------------
+
+def run_legiswatch():
+
+    # ცხრილის შექმნა
+    create_table()
+
+    # API-დან მონაცემების მიღება
+    bills = get_bills()
+
+    # სია, სადაც შევინახავთ მხოლოდ ახალ კანონპროექტებს
+    new_bills = []
+
+    # Email-ზე გასაგზავნი ტექსტი
+    email_message = ""
+
+    # მიღებული კანონპროექტების ციკლით დამუშავება
+    for option in bills:
+
+        # მონაცემთა ბაზაში დამატება
+        was_saved = insert_bill(
+            option["id"],
+            option["billName"]
+        )
+
+        # თუ ახალი კანონპროექტია
+        if was_saved:
+            new_bills.append(option)
+
+    # Email-ის სათაური
+    email_message += (
+        f"ნაპოვნია {len(new_bills)} ახალი საკანონმდებლო ინიციატივა.\n\n"
     )
-# აქ პირობას ვადგენთ რომ თუ ახალია კანონპროექტი რომელიც არაა ბაზაში, მაშინ ვამატებთ
-    if was_saved:
-        new_bills.append(option)
 
-# სათაურის შექმნა ელ ფოსტისთვის
-email_message += f"ნაპოვნია {len(new_bills)} ახალი საკანონმდებლო ინიციატივა.\n\n"
+    # დანომრილი კანონპროექტების ჩამონათვალი
+    for number, option in enumerate(new_bills, start=1):
 
-# ელფოსტით გასაგზავნი ტექსტში დანომრილი კანონპროექტების ჩამონათვალის გაკეთება
-for number, option in enumerate(new_bills, start=1):
-    email_message += (f"{number}. {option['billName']}" + "\n")
-    #ამის მეშვეობით ავაწყე ლინკი რომელზეც კონკრეტული კანონპროექტია განთავსებული რათა
-    #----------მეილში დასახელების ქვემოთ მოთავსებული იყოს ლინკი რომ გადახვიდე და დაათვალიერო
-    email_message += f"https://info.parliament.ge/#law-drafting/{option['id']}\n\n"
+        email_message += (
+            f"{number}. {option['billName']}\n"
+        )
 
+        # კონკრეტული კანონპროექტის ბმული
+        email_message += (
+            f"https://info.parliament.ge/#law-drafting/"
+            f"{option['id']}\n\n"
+        )
 
-email_subject = "მოგესალმებათ LegisWatch - ახალი საკანონმდებლო ინიციატივები"
-receiver_email = "irakli.ivanidze86@gmail.com"
+    # Email-ის მონაცემები
+    email_subject = (
+        "მოგესალმებათ LegisWatch - ახალი საკანონმდებლო ინიციატივები"
+    )
 
-# if len(new_bills) > 0:
+    receiver_email = "irakli.ivanidze86@gmail.com"
 
-send_email(
+    # Email-ის გაგზავნა
+    send_email(
         email_subject,
         email_message,
         receiver_email
     )
+
+
+# --------------------------------------------------
+# თუ ფაილს პირდაპირ Python-ით გავუშვებთ
+# --------------------------------------------------
+
+if __name__ == "__main__":
+    run_legiswatch()
