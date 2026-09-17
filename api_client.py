@@ -12,32 +12,28 @@ def get_bills():
         "User-Agent": "Mozilla/5.0" #აქ ვუთითებთ, რომ HTTP ის მოთხოვნა ბრაუზერის მსგავსად იგზავნება
     }
 
+    filtered_bills = [] # ვქმნით ცარიელ ცვლადს ლისტის სახით რომ შემდგომ დავამატოთ გაფილტრული დოკუმენტები
 # აქ მითითებული მაქვს API ის მოთხოვნის პარამეტრები: რომელი ჩანაწერიდან ვიწყებთ და რამდენ ჩანაწერს ვღებულობთ
 # start - ზე  20 იმიტო მაქ მითითებული რო პირველი 20 ჩანაწერში კანონპროექტები არ იყო, მხოლოდ დადგენილებები და წარდგინებები იყო
-    params = {
-        "start": 0,
-        "limit": 25
-    }
+    for start in [0, 25, 50]:
+        params = {
+            "start": start,
+            "limit": 25
+        }
 # ამით მოთხოვნას ვაგზავნით
-    response = requests.get(url, headers=headers, params=params)
+        response = requests.get(url, headers=headers, params=params)
 
 # პირველი ფილტრი, თუ მოთხოვნა წარმატებულია 
-    if response.status_code == 200:
+        if response.status_code == 200:
 
-        data = response.json()
-
-        filtered_bills = [] # ვქმნით ცარიელ ცვლადს ლისტის სახით რომ შემდგომ დავამატოთ გაფილტრული დოკუმენტები
-
+            data = response.json()
 # აქ ლუპის მეშვეობით ვაკეთებთ მეორე ფილტრებს რათა პარლამენტიუს საიტიდან მხოლოდ კანონპროექტები და ორგანული
 #კანონის პროექტები წამოვიღოთ
+            for bill in data["list"]:
+                if bill["billType"]["id"] == 1 or bill["billType"]["id"] == 11:
+                    filtered_bills.append(bill)
 
-        for bill in data["list"]:
-
-            if bill["billType"]["id"] == 1 or bill["billType"]["id"] == 11:
-                filtered_bills.append(bill) # - - - - - აქ ვამატებთ ლისტში
+    return filtered_bills        
                 
 # აქ კი ლისტის სახით ვაბრუნებთ
-        return filtered_bills 
-
-    else:
-        return []
+      
