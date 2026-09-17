@@ -14,14 +14,26 @@ def get_bills():
 
     filtered_bills = [] # ვქმნით ცარიელ ცვლადს ლისტის სახით რომ შემდგომ დავამატოთ გაფილტრული დოკუმენტები
 # აქ მითითებული მაქვს API ის მოთხოვნის პარამეტრები: რომელი ჩანაწერიდან ვიწყებთ და რამდენ ჩანაწერს ვღებულობთ
-# start - ზე  20 იმიტო მაქ მითითებული რო პირველი 20 ჩანაწერში კანონპროექტები არ იყო, მხოლოდ დადგენილებები და წარდგინებები იყო
+# API-ს ვთხოვთ მონაცემებს 3 გვერდად, თითო გვერდზე 25 ჩანაწერით
+# start განსაზღვრავს, რომელი ჩანაწერიდან იწყება თითოეული გვერდი
     for start in [0, 25, 50]:
         params = {
             "start": start,
             "limit": 25
         }
+        try:
 # ამით მოთხოვნას ვაგზავნით
-        response = requests.get(url, headers=headers, params=params)
+            response = requests.get(url, headers=headers, params=params, timeout=10)
+
+            response.raise_for_status()
+
+        except (
+        requests.exceptions.Timeout,
+        requests.exceptions.ConnectionError,
+        requests.exceptions.HTTPError
+        ):
+            print("API-სთან დაკავშირებისას პრობლემა მოხდა")
+            continue
 
 # პირველი ფილტრი, თუ მოთხოვნა წარმატებულია 
         if response.status_code == 200:
