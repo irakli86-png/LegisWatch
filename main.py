@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
 # მონაცემთა ბაზის ფუნქციების იმპორტი
-from database import create_table, insert_bill
+from database import create_table, insert_bill, get_bills as get_database_bills
 
 # პარლამენტის API-დან მონაცემების ფუნქციის იმპორტი
 from api_client import get_bills
@@ -24,6 +24,16 @@ def home():
     return {
         "message": "LegisWatch is running"
     }
+
+@app.get("/bills")
+def bills():
+
+    # ბაზიდან მოგვაქვს ყველა ინიციატივა
+    result = get_database_bills()
+
+    # ვაბრუნებთ მიღებულ მონაცემებს
+    return result
+
 
 @app.get("/run")
 def run():

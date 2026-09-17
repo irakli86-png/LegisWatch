@@ -148,3 +148,25 @@ def insert_bill(bill):
         # ვატყობინებთ main.py-ს,
         # რომ ახალი ჩანაწერი არ დამატებულა
         return False
+
+def get_bills():
+
+    # ვუკავშირდებით PostgreSQL მონაცემთა ბაზას
+    conn = psycopg.connect(DATABASE_URL)
+
+    # ვქმნით cursor-ს
+    cursor = conn.cursor()
+
+    # მოგვაქვს bills ცხრილში არსებული ყველა ჩანაწერი
+    cursor.execute("""
+        SELECT *
+        FROM bills
+    """)
+
+    # ვინახავთ ყველა ჩანაწერს
+    bills = cursor.fetchall()
+
+    # ვხურავთ კავშირს
+    conn.close()
+
+    return bills
