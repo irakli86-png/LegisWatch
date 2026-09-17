@@ -15,6 +15,7 @@ from email_sender import send_email
 # --------------------------------------------------
 
 app = FastAPI(title="LegisWatch")
+create_table()
 
 
 # მთავარი გვერდი
