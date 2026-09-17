@@ -1,80 +1,98 @@
-import sqlite3
+import os
+import psycopg
 
 
-# ეს ფუნქციია ქმნის bills ცხრილს
+# Railway-ის DATABASE_URL გარემოს ცვლადიდან
+# ვიღებთ PostgreSQL-ის მონაცემებს
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+
+# ვქმნით bills ცხრილს, თუ ის ჯერ არ არსებობს
 def create_table():
 
-    # ამით ვაკავშირებ SQLite მონაცემთა ბაზასთან
-    conn = sqlite3.connect("legiswatch.db")
+    # ვუკავშირდებით PostgreSQL მონაცემთა ბაზას
+    conn = psycopg.connect(DATABASE_URL)
+
+    # ვქმნით cursor-ს SQL ბრძანებების შესასრულებლად
     cursor = conn.cursor()
 
-    # bills ცხრილს ვქმნით
+    # ვქმნით bills ცხრილს
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS bills(
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id SERIAL PRIMARY KEY,
             bill_id INTEGER UNIQUE,
             bill_name TEXT
         )
     """)
 
-   
+    # ვინახავთ ცვლილებას მონაცემთა ბაზაში
     conn.commit()
+
+    # ვხურავთ კავშირს მონაცემთა ბაზასთან
     conn.close()
 
 
-# ამ ფუნქციით ვამოწმებთ, არსებობს თუ არა კონკრეტული bill_id ბაზაში
+# ვამოწმებთ, არსებობს თუ არა კონკრეტული bill_id მონაცემთა ბაზაში
 def bill_exists(bill_id):
 
-    
-    conn = sqlite3.connect("legiswatch.db")
+    # ვუკავშირდებით PostgreSQL მონაცემთა ბაზას
+    conn = psycopg.connect(DATABASE_URL)
+
+    # ვქმნით cursor-ს
     cursor = conn.cursor()
 
-    # აქ ვაკეთებთ bill_id-ის მიხედვით ჩანაწერის მოძებნას ბაზაში
+    # ვეძებთ კონკრეტულ bill_id-ს bills ცხრილში
     cursor.execute(
-        "SELECT * FROM bills WHERE bill_id = ?",
+        "SELECT * FROM bills WHERE bill_id = %s",
         (bill_id,)
     )
 
-    # პირველი ნაპოვნი ჩანაწერის მიღება
+    # ვიღებთ ნაპოვნ პირველ ჩანაწერს
     result = cursor.fetchone()
+
+    # ვხურავთ კავშირს
     conn.close()
 
-    # თუ იდენტური ჩანაწერი ვერ მოიძებნა, ფუნქცია დაგვიბრუნებს False-ს
+    # თუ ჩანაწერი ვერ ვიპოვეთ
     if result is None:
         return False
+
+    # თუ ჩანაწერი არსებობს
     else:
-        # თუ ჩანაწერი არსებობს, ფუნქცია აბრუნებს True-ს
         return True
 
 
-# ამ ფუნქციით ახალ კანონპროექტს ვამატებთ ბაზაში
+# ვამატებთ ახალ საკანონმდებლო ინიციატივას მონაცემთა ბაზაში
 def insert_bill(bill_id, bill_name):
 
-    # ჩანაწერი მხოლოდ მაშინ დაემატება, თუ bill_id ჯერ არ არსებობს ბაზაში
+    # ჯერ ვამოწმებთ, ხომ არ არსებობს ეს ინიციატივა
     if not bill_exists(bill_id):
 
-       
-        conn = sqlite3.connect("legiswatch.db")    
+        # ვუკავშირდებით PostgreSQL მონაცემთა ბაზას
+        conn = psycopg.connect(DATABASE_URL)
+
+        # ვქმნით cursor-ს
         cursor = conn.cursor()
 
-        # ახალი კანონპროექტის დამატება bills ცხრილში
-        cursor.execute(
-            """
+        # ვამატებთ ახალ ჩანაწერს bills ცხრილში
+        cursor.execute("""
             INSERT INTO bills (bill_id, bill_name)
-            VALUES (?, ?)
-            """,(bill_id, bill_name)
-        )
-              
+            VALUES (%s, %s)
+        """, (bill_id, bill_name))
+
+        # ვინახავთ ცვლილებას მონაცემთა ბაზაში
         conn.commit()
+
+        # ვხურავთ კავშირს
         conn.close()
 
+        # ვატყობინებთ main.py-ს,
+        # რომ ახალი ინიციატივა ნამდვილად დაემატა
         return True
+
+    # თუ bill_id უკვე არსებობდა
     else:
+
+        # ვატყობინებთ main.py-ს,
+        # რომ ახალი ჩანაწერი არ დამატებულა
         return False
-
-
-
-# პროგრამის გაშვებისას bills ცხრილის შექმნა
-create_table()
-
-                
