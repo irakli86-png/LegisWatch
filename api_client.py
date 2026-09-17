@@ -16,7 +16,7 @@ def get_bills():
 # start - ზე  20 იმიტო მაქ მითითებული რო პირველი 20 ჩანაწერში კანონპროექტები არ იყო, მხოლოდ დადგენილებები და წარდგინებები იყო
     params = {
         "start": 0,
-        "limit": 20
+        "limit": 25
     }
 # ამით მოთხოვნას ვაგზავნით
     response = requests.get(url, headers=headers, params=params)
