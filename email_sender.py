@@ -5,11 +5,7 @@ import requests
 # Railway-ის BREVO_API_KEY გარემოს ცვლადიდან
 # ვიღებთ Brevo API Key-ს
 BREVO_API_KEY = os.getenv("BREVO_API_KEY")
-print("BREVO_API_KEY exists:", BREVO_API_KEY is not None)
 
-if BREVO_API_KEY:
-    print("BREVO_API_KEY length:", len(BREVO_API_KEY))
-    print("BREVO_API_KEY starts with:", BREVO_API_KEY[:8])
 
 # Railway-ის SENDER_EMAIL გარემოს ცვლადიდან
 # ვიღებთ გამომგზავნის email-ს
@@ -22,7 +18,6 @@ def send_email(email_subject, email_message, receiver_email):
     # Brevo API-ის მისამართი
     url = "https://api.brevo.com/v3/smtp/email"
 
-
     # ვუთითებთ API-სთვის საჭირო headers-ს
     headers = {
         "accept": "application/json",
@@ -30,30 +25,20 @@ def send_email(email_subject, email_message, receiver_email):
         "content-type": "application/json"
     }
 
-
     # ვქმნით email-ის მონაცემებს
     data = {
-
-        # ვინ აგზავნის email-ს
         "sender": {
             "email": SENDER_EMAIL,
             "name": "LegisWatch"
         },
-
-        # ვის ეგზავნება email
         "to": [
             {
                 "email": receiver_email
             }
         ],
-
-        # email-ის სათაური
         "subject": email_subject,
-
-        # email-ის ტექსტი
         "textContent": email_message
     }
-
 
     # ვაგზავნით POST request-ს Brevo API-ში
     response = requests.post(
@@ -62,10 +47,6 @@ def send_email(email_subject, email_message, receiver_email):
         json=data
     )
 
-
     # თუ API-მ შეცდომა დააბრუნა,
     # პროგრამა გამოიტანს შესაბამის შეცდომას
-    print("Brevo status:", response.status_code)
-    print("Brevo response:", response.text)
-
     response.raise_for_status()
