@@ -15,7 +15,7 @@ def create_table():
 
     # ვქმნით cursor-ს SQL ბრძანებების შესასრულებლად
     cursor = conn.cursor()
-    cursor.execute("DROP TABLE IF EXISTS bills")
+    
     # ვქმნით bills ცხრილს
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS bills(
