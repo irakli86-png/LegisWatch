@@ -1,5 +1,6 @@
 import os
 import psycopg
+from psycopg.rows import dict_row
 
 
 # Railway-ის DATABASE_URL გარემოს ცვლადიდან
@@ -152,8 +153,11 @@ def insert_bill(bill):
 def get_bills():
 
     # ვუკავშირდებით PostgreSQL მონაცემთა ბაზას
-    conn = psycopg.connect(DATABASE_URL)
-
+    
+    conn = psycopg.connect(
+        DATABASE_URL,
+        row_factory=dict_row
+    )
     # ვქმნით cursor-ს
     cursor = conn.cursor()
 
