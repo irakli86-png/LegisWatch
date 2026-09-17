@@ -5,7 +5,11 @@ import requests
 # Railway-ის BREVO_API_KEY გარემოს ცვლადიდან
 # ვიღებთ Brevo API Key-ს
 BREVO_API_KEY = os.getenv("BREVO_API_KEY")
+print("BREVO_API_KEY exists:", BREVO_API_KEY is not None)
 
+if BREVO_API_KEY:
+    print("BREVO_API_KEY length:", len(BREVO_API_KEY))
+    print("BREVO_API_KEY starts with:", BREVO_API_KEY[:8])
 
 # Railway-ის SENDER_EMAIL გარემოს ცვლადიდან
 # ვიღებთ გამომგზავნის email-ს
