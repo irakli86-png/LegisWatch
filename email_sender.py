@@ -61,4 +61,7 @@ def send_email(email_subject, email_message, receiver_email):
 
     # თუ API-მ შეცდომა დააბრუნა,
     # პროგრამა გამოიტანს შესაბამის შეცდომას
+    print("Brevo status:", response.status_code)
+    print("Brevo response:", response.text)
+
     response.raise_for_status()
