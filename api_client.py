@@ -44,7 +44,7 @@ def get_bills():
             for bill in data["list"]:
                 if bill["billType"]["id"] == 1 or bill["billType"]["id"] == 11:
                     filtered_bills.append(bill)
-
+                
     return filtered_bills        
                 
 # აქ კი ლისტის სახით ვაბრუნებთ

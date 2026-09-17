@@ -56,10 +56,7 @@ def run_legiswatch():
     for option in bills:
 
         # მონაცემთა ბაზაში დამატება
-        was_saved = insert_bill(
-            option["id"],
-            option["billName"]
-        )
+        was_saved = insert_bill(option)
 
         # თუ ახალი კანონპროექტია
         if was_saved:

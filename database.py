@@ -15,13 +15,22 @@ def create_table():
 
     # ვქმნით cursor-ს SQL ბრძანებების შესასრულებლად
     cursor = conn.cursor()
-
+    cursor.execute("DROP TABLE IF EXISTS bills")
     # ვქმნით bills ცხრილს
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS bills(
-            id SERIAL PRIMARY KEY,
-            bill_id INTEGER UNIQUE,
-            bill_name TEXT
+        id SERIAL PRIMARY KEY,
+        bill_id INTEGER UNIQUE,
+        bill_name TEXT,
+        bill_description TEXT,
+        bill_type TEXT,
+        registration_number TEXT,
+        registration_date TEXT,
+        package_name TEXT,
+        initiator TEXT,
+        author TEXT,
+        bill_count INTEGER,
+        confirmed_procedure BOOLEAN
         )
     """)
 
@@ -63,7 +72,24 @@ def bill_exists(bill_id):
 
 
 # ვამატებთ ახალ საკანონმდებლო ინიციატივას მონაცემთა ბაზაში
-def insert_bill(bill_id, bill_name):
+def insert_bill(bill):
+    # API-დან მიღებული bill dictionary-დან
+    # ვიღებთ bill-ის ID-ს
+    bill_id = bill["id"]
+
+    # API-დან მიღებული bill dictionary-დან
+    # ვიღებთ bill-ის სახელს
+    bill_name = bill["billName"]
+
+    bill_description = bill["billDescription"]
+    bill_type = bill["billType"]["name"]
+    registration_number = bill["billPackage"]["registrationNumber"]
+    registration_date = bill["billPackage"]["registrationDate"]
+    package_name = bill["billPackage"]["packageName"]
+    initiator = bill["billPackage"]["initiator"]
+    author = bill["billPackage"]["author"]
+    bill_count = bill["billPackage"]["billCount"]
+    confirmed_procedure = bill["billPackage"]["confirmedProcedure"]
 
     # ჯერ ვამოწმებთ, ხომ არ არსებობს ეს ინიციატივა
     if not bill_exists(bill_id):
@@ -76,9 +102,35 @@ def insert_bill(bill_id, bill_name):
 
         # ვამატებთ ახალ ჩანაწერს bills ცხრილში
         cursor.execute("""
-            INSERT INTO bills (bill_id, bill_name)
-            VALUES (%s, %s)
-        """, (bill_id, bill_name))
+    INSERT INTO bills (
+        bill_id,
+        bill_name,
+        bill_description,
+        bill_type,
+        registration_number,
+        registration_date,
+        package_name,
+        initiator,
+        author,
+        bill_count,
+        confirmed_procedure
+    )
+    VALUES (
+        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
+    )
+""", (
+    bill_id,
+    bill_name,
+    bill_description,
+    bill_type,
+    registration_number,
+    registration_date,
+    package_name,
+    initiator,
+    author,
+    bill_count,
+    confirmed_procedure
+))
 
         # ვინახავთ ცვლილებას მონაცემთა ბაზაში
         conn.commit()
