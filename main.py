@@ -25,6 +25,14 @@ def home():
         "message": "LegisWatch is running"
     }
 
+@app.get("/run")
+def run():
+
+    run_legiswatch()
+
+    return {
+        "message": "LegisWatch run completed"
+    }
 
 # --------------------------------------------------
 # LegisWatch-ის ავტომატიზაციის ფუნქცია
