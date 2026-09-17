@@ -1,30 +1,64 @@
-import smtplib
 import os
+import requests
 
-SMTP_SERVER = os.getenv("SMTP_SERVER", "smtp-relay.brevo.com")
-SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
 
-SMTP_LOGIN = os.getenv("SMTP_LOGIN")
-SMTP_KEY = os.getenv("SMTP_KEY")
+# Railway-ის BREVO_API_KEY გარემოს ცვლადიდან
+# ვიღებთ Brevo API Key-ს
+BREVO_API_KEY = os.getenv("BREVO_API_KEY")
 
+
+# Railway-ის SENDER_EMAIL გარემოს ცვლადიდან
+# ვიღებთ გამომგზავნის email-ს
 SENDER_EMAIL = os.getenv("SENDER_EMAIL")
 
 
+# ვაგზავნით email-ს Brevo API-ის საშუალებით
 def send_email(email_subject, email_message, receiver_email):
 
-    server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
-    server.starttls()
-    server.login(SMTP_LOGIN, SMTP_KEY)
+    # Brevo API-ის მისამართი
+    url = "https://api.brevo.com/v3/smtp/email"
 
-    message = (
-        f"From: {SENDER_EMAIL}\r\n"
-        f"To: {receiver_email}\r\n"
-        f"Subject: {email_subject}\r\n"
-        f"MIME-Version: 1.0\r\n"
-        f"Content-Type: text/plain; charset=utf-8\r\n"
-        f"\r\n"
-        f"{email_message}"
-    ).encode("utf-8")
 
-    server.sendmail(SENDER_EMAIL, receiver_email, message)
-    server.quit()
+    # ვუთითებთ API-სთვის საჭირო headers-ს
+    headers = {
+        "accept": "application/json",
+        "api-key": BREVO_API_KEY,
+        "content-type": "application/json"
+    }
+
+
+    # ვქმნით email-ის მონაცემებს
+    data = {
+
+        # ვინ აგზავნის email-ს
+        "sender": {
+            "email": SENDER_EMAIL,
+            "name": "LegisWatch"
+        },
+
+        # ვის ეგზავნება email
+        "to": [
+            {
+                "email": receiver_email
+            }
+        ],
+
+        # email-ის სათაური
+        "subject": email_subject,
+
+        # email-ის ტექსტი
+        "textContent": email_message
+    }
+
+
+    # ვაგზავნით POST request-ს Brevo API-ში
+    response = requests.post(
+        url,
+        headers=headers,
+        json=data
+    )
+
+
+    # თუ API-მ შეცდომა დააბრუნა,
+    # პროგრამა გამოიტანს შესაბამის შეცდომას
+    response.raise_for_status()
