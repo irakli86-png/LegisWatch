@@ -150,7 +150,7 @@ def insert_bill(bill):
         # რომ ახალი ჩანაწერი არ დამატებულა
         return False
 
-def get_bills(limit,offset):
+def get_bills(limit,offset, search):
 
     # ვუკავშირდებით PostgreSQL მონაცემთა ბაზას
     
@@ -165,9 +165,10 @@ def get_bills(limit,offset):
     cursor.execute("""
         SELECT *
         FROM bills
+        WHERE bill_name ILIKE %s
         LIMIT %s
         OFFSET %s
-    """,(limit,offset))
+    """,(f"%{search}%", limit, offset))
 
     # ვინახავთ ყველა ჩანაწერს
     bills = cursor.fetchall()
