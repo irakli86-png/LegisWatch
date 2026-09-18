@@ -165,7 +165,7 @@ def get_bills(limit,offset, search):
     cursor.execute("""
         SELECT *
         FROM bills
-        WHERE bill_name ILIKE %s
+        WHERE bill_name LIKE %s
         LIMIT %s
         OFFSET %s
     """,(f"%{search}%", limit, offset))
