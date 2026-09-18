@@ -29,7 +29,7 @@ def home():
     }
 
 @app.get("/bills")
-def bills(limit):
+def bills(limit=10):
 
     # ბაზიდან მოგვაქვს ყველა ინიციატივა
     result = get_database_bills(limit)
