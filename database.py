@@ -161,15 +161,15 @@ def get_bills(limit,offset, search):
     # ვქმნით cursor-ს
     cursor = conn.cursor()
 
-    print("SEARCH:", search)
+   
     # მოგვაქვს bills ცხრილში არსებული ყველა ჩანაწერი
     cursor.execute("""
-        SELECT *
-        FROM bills
-        WHERE bill_name LIKE %s
-        LIMIT %s
-        OFFSET %s
-    """,(f"%{search}%", limit, offset))
+    SELECT *
+    FROM bills
+    WHERE bill_name ILIKE '%' || %s || '%'
+    LIMIT %s
+    OFFSET %s
+""", (search, limit, offset))
 
     # ვინახავთ ყველა ჩანაწერს
     bills = cursor.fetchall()
