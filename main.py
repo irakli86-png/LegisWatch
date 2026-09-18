@@ -1,7 +1,10 @@
 from fastapi import FastAPI
 
 # მონაცემთა ბაზის ფუნქციების იმპორტი
-from database import create_table, insert_bill, get_bills as get_database_bills
+from database import (create_table, 
+                      insert_bill, 
+                      get_bills as get_database_bills, 
+                      get_bill_by_id)
 
 # პარლამენტის API-დან მონაცემების ფუნქციის იმპორტი
 from api_client import get_bills
@@ -32,6 +35,15 @@ def bills():
     result = get_database_bills()
 
     # ვაბრუნებთ მიღებულ მონაცემებს
+    return result
+
+@app.get("/bills/{bill_id}")
+def bill(bill_id):
+
+    # ბაზიდან მოგვაქვს კონკრეტული ინიციატივა
+    result = get_bill_by_id(bill_id)
+
+    # ვაბრუნებთ ინიციატივას
     return result
 
 

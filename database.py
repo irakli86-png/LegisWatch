@@ -174,3 +174,32 @@ def get_bills():
     conn.close()
 
     return bills
+
+def get_bill_by_id(bill_id):
+
+    # ვუკავშირდებით PostgreSQL მონაცემთა ბაზას
+    conn = psycopg.connect(
+        DATABASE_URL,
+        row_factory=dict_row
+    )
+
+    # ვქმნით cursor-ს
+    cursor = conn.cursor()
+
+    # ვეძებთ კონკრეტულ bill_id-ს
+    cursor.execute(
+        """
+        SELECT *
+        FROM bills
+        WHERE bill_id = %s
+        """,
+        (bill_id,)
+    )
+
+    # ვიღებთ ნაპოვნ ჩანაწერს
+    bill = cursor.fetchone()
+
+    # ვხურავთ კავშირს
+    conn.close()
+
+    return bill
