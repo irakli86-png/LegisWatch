@@ -166,10 +166,10 @@ def get_bills(limit,offset, search):
     cursor.execute("""
     SELECT *
     FROM bills
-    WHERE bill_name ILIKE '%' || %s || '%'
+    WHERE bill_name ILIKE %s
     LIMIT %s
     OFFSET %s
-""", (search, limit, offset))
+""", (f"%{search}%", limit, offset))
 
     # ვინახავთ ყველა ჩანაწერს
     bills = cursor.fetchall()
