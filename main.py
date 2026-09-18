@@ -29,10 +29,10 @@ def home():
     }
 
 @app.get("/bills")
-def bills():
+def bills(limit):
 
     # ბაზიდან მოგვაქვს ყველა ინიციატივა
-    result = get_database_bills()
+    result = get_database_bills(limit)
 
     # ვაბრუნებთ მიღებულ მონაცემებს
     return result

@@ -150,7 +150,7 @@ def insert_bill(bill):
         # რომ ახალი ჩანაწერი არ დამატებულა
         return False
 
-def get_bills():
+def get_bills(limit):
 
     # ვუკავშირდებით PostgreSQL მონაცემთა ბაზას
     
@@ -165,7 +165,8 @@ def get_bills():
     cursor.execute("""
         SELECT *
         FROM bills
-    """)
+        LIMIT %s
+    """,(limit,))
 
     # ვინახავთ ყველა ჩანაწერს
     bills = cursor.fetchall()
