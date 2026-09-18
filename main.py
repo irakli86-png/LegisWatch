@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 
 # მონაცემთა ბაზის ფუნქციების იმპორტი
 from database import (create_table, 
@@ -42,8 +42,14 @@ def bill(bill_id):
 
     # ბაზიდან მოგვაქვს კონკრეტული ინიციატივა
     result = get_bill_by_id(bill_id)
+     # თუ ასეთი ინიციატივა ვერ მოიძებნა
+    if result is None:
+        raise HTTPException(
+            status_code=404,
+            detail="დოკუმენტი ვერ მოიძებნა"
+        )
 
-    # ვაბრუნებთ ინიციატივას
+       # ვაბრუნებთ ინიციატივას
     return result
 
 
