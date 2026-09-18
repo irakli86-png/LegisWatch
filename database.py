@@ -161,6 +161,7 @@ def get_bills(limit,offset, search):
     # ვქმნით cursor-ს
     cursor = conn.cursor()
 
+    print("SEARCH:", search)
     # მოგვაქვს bills ცხრილში არსებული ყველა ჩანაწერი
     cursor.execute("""
         SELECT *
