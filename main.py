@@ -24,7 +24,8 @@ app = FastAPI(title="LegisWatch")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:5500"
+        "http://localhost:5500",
+         "https://front-end-production-71b9.up.railway.app"
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -63,6 +64,7 @@ def bill(bill_id):
        # ვაბრუნებთ ინიციატივას
     return result
 
+# დაემატა ახალი -----------
 
 @app.get("/run")
 def run():
