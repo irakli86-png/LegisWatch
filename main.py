@@ -62,11 +62,29 @@ def run():
         "message": "LegisWatch run completed"
     }
 
+@app.post("/check-updates")
+def check_updates(data: dict):
+
+    email = data.get("email")
+
+    if not email:
+        raise HTTPException(
+            status_code=400,
+            detail="Email is required"
+        )
+
+    new_bills_count = run_legiswatch(email)
+
+    return {
+        "message": "Updates checked successfully",
+        "new_bills": new_bills_count
+    }
+
 # --------------------------------------------------
 # LegisWatch-ის ავტომატიზაციის ფუნქცია
 # --------------------------------------------------
 
-def run_legiswatch():
+def run_legiswatch(receiver_email="irakli.ivanidze86@gmail.com"):
 
     # ცხრილის შექმნა
     create_table()
@@ -113,15 +131,13 @@ def run_legiswatch():
         "მოგესალმებათ LegisWatch - ახალი საკანონმდებლო ინიციატივები"
     )
 
-    receiver_email = "irakli.ivanidze86@gmail.com"
-
-    # Email-ის გაგზავნა
     send_email(
-        email_subject,
-        email_message,
-        receiver_email
-    )
+    email_subject,
+    email_message,
+    receiver_email
+)
 
+    return len(new_bills)
 
 # --------------------------------------------------
 # თუ ფაილს პირდაპირ Python-ით გავუშვებთ
