@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 
 # მონაცემთა ბაზის ფუნქციების იმპორტი
 from database import (create_table, 
@@ -18,9 +19,19 @@ from email_sender import send_email
 # --------------------------------------------------
 
 app = FastAPI(title="LegisWatch")
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5500"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 create_table()
-
-
 # მთავარი გვერდი
 @app.get("/")
 def home():
