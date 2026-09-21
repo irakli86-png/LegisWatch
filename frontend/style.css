@@ -471,9 +471,9 @@ input {
 
 .law-sketch {
 
-    width: 88%;
+    width: 100%;
 
-    max-width: 650px;
+    max-width: 760px;
 
     height: auto;
 
@@ -485,11 +485,25 @@ input {
 
     mix-blend-mode: multiply;
 
-    transform:
-        translate(
-            42px,
-            -32px
-        );
+    opacity: 0.92;
+
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 12%,
+        black 88%,
+        transparent 100%
+    );
+
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 12%,
+        black 88%,
+        transparent 100%
+    );
+
+    transform: translate(25px, -20px);
 }
 
 
