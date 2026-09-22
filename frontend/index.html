@@ -20,10 +20,7 @@
 
     <!-- FONTS -->
 
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link
         rel="preconnect"
@@ -41,7 +38,7 @@
 
     <link
         rel="stylesheet"
-        href="style.css?v=101"
+        href="style.css?v=102"
     >
 
 </head>
@@ -54,20 +51,34 @@
      HEADER
 ===================================================== -->
 
-<a href="#home" class="logo">
-    <img
-        src="Assets/egiswatch-logo.png"
-        alt="LegisWatch"
-        class="logo-mark"
-    >
+<header class="site-header">
 
-    <div class="logo-info">
-        <span class="logo-text">LegisWatch</span>
-        <span class="logo-tagline">
-            STAY INFORMED. TRACK WHAT MATTERS.
-        </span>
-    </div>
-</a>
+    <div class="container header-inner">
+
+        <a
+            href="#home"
+            class="logo"
+        >
+
+            <img
+                src="Assets/legiswatch-logo.png"
+                alt="LegisWatch"
+                class="logo-mark"
+            >
+
+            <div class="logo-info">
+
+                <span class="logo-text">
+                    LegisWatch
+                </span>
+
+                <span class="logo-tagline">
+                    STAY INFORMED. TRACK WHAT MATTERS.
+                </span>
+
+            </div>
+
+        </a>
 
 
         <nav class="main-nav">
@@ -144,17 +155,12 @@
             <div class="gold-line"></div>
 
 
-            <div class="hero-eyebrow">
-                STAY INFORMED. TRACK WHAT MATTERS.
-            </div>
-
-
             <h1>
-                GEORGIAN
-                <br>
-                LEGISLATION
-                <br>
+
+                GEORGIAN<br>
+                LEGISLATION<br>
                 IN ONE PLACE.
+
             </h1>
 
 
@@ -167,6 +173,8 @@
 
             </p>
 
+
+            <!-- EMAIL + CHECK BUTTON -->
 
             <div class="update-form">
 
@@ -203,6 +211,7 @@
             ></div>
 
         </div>
+
 
 
         <div class="hero-visual">
@@ -276,9 +285,9 @@
 
                 <svg viewBox="0 0 48 48">
 
-                    <path d="M8 24H40"/>
+                    <path d="M8 24H40" />
 
-                    <path d="M24 8V40"/>
+                    <path d="M24 8V40" />
 
                     <circle
                         cx="24"
@@ -315,13 +324,13 @@
 
                 <svg viewBox="0 0 48 48">
 
-                    <path d="M12 10H36V38H12Z"/>
+                    <path d="M12 10H36V38H12Z" />
 
-                    <path d="M17 17H31"/>
+                    <path d="M17 17H31" />
 
-                    <path d="M17 24H31"/>
+                    <path d="M17 24H31" />
 
-                    <path d="M17 31H27"/>
+                    <path d="M17 31H27" />
 
                 </svg>
 
@@ -337,7 +346,7 @@
                 <p>
                     Access official legislative
                     information through a clear
-                    and accessible interface.
+                    and simple interface.
                 </p>
 
             </div>
@@ -367,14 +376,17 @@
 
             <div class="gold-line"></div>
 
+
             <span class="about-label">
                 ABOUT LEGISWATCH
             </span>
 
+
             <h2>
-                LEGISLATION
-                <br>
+
+                LEGISLATION<br>
                 MADE CLEAR.
+
             </h2>
 
         </div>
@@ -382,26 +394,34 @@
 
         <div class="about-text">
 
+
             <p class="about-lead">
-                LegisWatch makes Georgian
-                legislation easier to follow.
+
+                LegisWatch makes Georgian legislation
+                easier to follow.
+
             </p>
 
 
             <p>
+
                 The platform monitors newly registered
                 legislative initiatives and presents
                 official parliamentary information in
                 one clear and accessible place.
+
             </p>
 
 
             <p>
+
                 Instead of searching through different
                 pages and documents, users can quickly
                 discover recent initiatives and follow
                 their development.
+
             </p>
+
 
         </div>
 
@@ -428,17 +448,19 @@
 
             <div class="gold-line"></div>
 
+
             <span class="process-label">
                 HOW IT WORKS
             </span>
 
+
             <h2>
-                FROM PARLIAMENT
-                <br>
+                FROM PARLIAMENT<br>
                 TO YOUR SCREEN.
             </h2>
 
         </div>
+
 
 
         <div class="process-grid">
@@ -463,10 +485,12 @@
 
 
                 <p>
+
                     LegisWatch checks official
                     parliamentary information
                     for newly registered
                     legislative initiatives.
+
                 </p>
 
             </div>
@@ -492,9 +516,11 @@
 
 
                 <p>
+
                     Legislative information is
                     collected and organized into
                     a simple and readable format.
+
                 </p>
 
             </div>
@@ -520,9 +546,11 @@
 
 
                 <p>
+
                     Users can quickly discover
                     legislation and open the
                     official parliamentary source.
+
                 </p>
 
             </div>
@@ -550,6 +578,7 @@
 
         <div class="legislation-header">
 
+
             <div>
 
                 <div class="gold-line"></div>
@@ -573,7 +602,9 @@
                 VIEW ALL LEGISLATION →
             </a>
 
+
         </div>
+
 
 
         <div class="search-area">
@@ -583,6 +614,7 @@
                 type="text"
                 placeholder="Search legislation..."
             >
+
 
             <button
                 id="searchButton"
@@ -594,12 +626,14 @@
         </div>
 
 
+
         <div
             id="resultCount"
             class="result-count"
         >
             0 results
         </div>
+
 
 
         <div
@@ -618,13 +652,16 @@
         </div>
 
 
+
         <div
             id="results"
             class="results"
         ></div>
 
 
+
         <div class="pagination">
+
 
             <button
                 id="previousButton"
@@ -634,9 +671,11 @@
                 ← PREVIOUS
             </button>
 
+
             <span id="pageNumber">
                 1
             </span>
+
 
             <button
                 id="nextButton"
@@ -644,6 +683,7 @@
             >
                 NEXT →
             </button>
+
 
         </div>
 
@@ -720,7 +760,9 @@
 
 
         <div class="footer-copy">
+
             © 2026 LegisWatch
+
         </div>
 
 
@@ -730,7 +772,10 @@
 
 
 
+<!-- JAVASCRIPT -->
+
 <script src="script.js?v=100"></script>
+
 
 </body>
 

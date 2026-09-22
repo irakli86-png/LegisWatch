@@ -1,5 +1,11 @@
 /* =========================================================
    LEGISWATCH
+   NAMARI STYLE
+========================================================= */
+
+
+/* =========================================================
+   RESET
 ========================================================= */
 
 * {
@@ -8,11 +14,9 @@
     box-sizing: border-box;
 }
 
-
 html {
     scroll-behavior: smooth;
 }
-
 
 body {
     font-family:
@@ -22,18 +26,14 @@ body {
         sans-serif;
 
     background: #ffffff;
-
     color: #111111;
-
     line-height: 1.6;
 }
-
 
 a {
     color: inherit;
     text-decoration: none;
 }
-
 
 button,
 input {
@@ -47,19 +47,12 @@ input {
 
 :root {
     --black: #111111;
-
     --dark-gray: #333333;
-
     --gray: #666666;
-
     --light-gray: #999999;
-
     --border: #e5e5e5;
-
     --gold: #c8a94b;
-
     --white: #ffffff;
-
     --container: 1280px;
 }
 
@@ -83,7 +76,7 @@ input {
 ========================================================= */
 
 .site-header {
-    height: 92px;
+    height: 108px;
 
     background: #111111;
 
@@ -116,52 +109,103 @@ input {
 
 .logo {
     display: flex;
+
     align-items: center;
+
     gap: 14px;
+
     height: 100%;
+
     flex-shrink: 0;
 }
+
 
 .logo-mark {
     width: 74px;
+
     height: 42px;
+
     display: block;
+
     object-fit: contain;
+
     flex-shrink: 0;
 }
 
+
 .logo-info {
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
+
     align-items: flex-start;
-    gap: 3px;
+
+    gap: 4px;
 }
+
 
 .logo-text {
     font-family:
         "Open Sans",
         Arial,
         sans-serif;
+
     font-size: 30px;
+
     line-height: 1;
+
     font-weight: 700;
+
     letter-spacing: -1.4px;
+
     color: #ffffff;
+
     white-space: nowrap;
 }
 
+
 .logo-tagline {
+    position: relative;
+
+    display: block;
+
+    padding-bottom: 5px;
+
     font-family:
         "Open Sans",
         Arial,
         sans-serif;
+
     font-size: 8px;
+
     line-height: 1;
+
     font-weight: 600;
+
     letter-spacing: 2px;
+
     color: #c5c5c5;
+
     white-space: nowrap;
+}
+
+
+.logo-tagline::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 0;
+
+    width: 100%;
+
+    height: 2px;
+
+    background: var(--gold);
 }
 
 
@@ -264,9 +308,9 @@ input {
 
     display: flex;
 
-    align-items: center;
+    align-items: flex-start;
 
-    padding-top: 10px;
+    padding-top: 32px;
 }
 
 
@@ -277,7 +321,7 @@ input {
         45%
         55%;
 
-    align-items: center;
+    align-items: start;
 
     min-height: 650px;
 }
@@ -292,6 +336,10 @@ input {
 }
 
 
+/* =========================================================
+   GOLD LINE
+========================================================= */
+
 .gold-line {
     width: 38px;
 
@@ -303,18 +351,9 @@ input {
 }
 
 
-.hero-eyebrow {
-    font-size: 14px;
-
-    font-weight: 600;
-
-    letter-spacing: 4px;
-
-    color: #666666;
-
-    margin-bottom: 25px;
-}
-
+/* =========================================================
+   HERO TITLE
+========================================================= */
 
 .hero h1 {
     font-size: clamp(
@@ -336,6 +375,10 @@ input {
     max-width: 650px;
 }
 
+
+/* =========================================================
+   HERO DESCRIPTION
+========================================================= */
 
 .hero-description {
     max-width: 570px;
@@ -403,7 +446,7 @@ input {
 
 
 /* =========================================================
-   BUTTON
+   HERO BUTTON
 ========================================================= */
 
 .outline-button {
@@ -463,7 +506,7 @@ input {
 
 
 /* =========================================================
-   STATUS
+   HERO STATUS
 ========================================================= */
 
 .status {
@@ -484,7 +527,7 @@ input {
 
 
 /* =========================================================
-   HERO IMAGE
+   HERO VISUAL
 ========================================================= */
 
 .hero-visual {
@@ -521,29 +564,26 @@ input {
 
     opacity: 0.92;
 
-    -webkit-mask-image:
-        linear-gradient(
-            to right,
-            transparent 0%,
-            black 12%,
-            black 88%,
-            transparent 100%
-        );
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 12%,
+        black 88%,
+        transparent 100%
+    );
 
-    mask-image:
-        linear-gradient(
-            to right,
-            transparent 0%,
-            black 12%,
-            black 88%,
-            transparent 100%
-        );
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 12%,
+        black 88%,
+        transparent 100%
+    );
 
-    transform:
-        translate(
-            25px,
-            -20px
-        );
+    transform: translate(
+        25px,
+        -20px
+    );
 }
 
 
@@ -881,7 +921,7 @@ input {
 
 
 /* =========================================================
-   LEGISLATION
+   RECENT LEGISLATION
 ========================================================= */
 
 .legislation-section {
@@ -1016,7 +1056,7 @@ input {
 
 
 /* =========================================================
-   RESULTS
+   RESULT COUNT
 ========================================================= */
 
 .result-count {
@@ -1027,6 +1067,10 @@ input {
     margin-bottom: 15px;
 }
 
+
+/* =========================================================
+   RESULTS
+========================================================= */
 
 .results {
     border-top: 1px solid #dddddd;
@@ -1049,7 +1093,8 @@ input {
 
     border-bottom: 1px solid #e5e5e5;
 
-    transition: background 0.2s ease;
+    transition:
+        background 0.2s ease;
 }
 
 
@@ -1330,6 +1375,8 @@ input {
 @media (max-width: 1100px) {
 
     .main-nav {
+        margin-left: 0;
+
         gap: 25px;
     }
 
@@ -1391,15 +1438,8 @@ input {
     }
 
 
-    .logo-mark {
-        width: 64px;
-
-        height: 38px;
-    }
-
-
-    .logo-text {
-        font-size: 27px;
+    .logo {
+        height: auto;
     }
 
 
@@ -1413,8 +1453,6 @@ input {
         gap: 25px;
 
         overflow-x: auto;
-
-        margin: 0;
     }
 
 
@@ -1431,7 +1469,7 @@ input {
     /* HERO */
 
     .hero {
-        padding: 70px 0;
+        padding: 45px 0 70px;
     }
 
 
@@ -1468,7 +1506,7 @@ input {
     }
 
 
-    /* FORM */
+    /* UPDATE FORM */
 
     .update-form {
         max-width: 100%;
@@ -1509,7 +1547,7 @@ input {
     }
 
 
-    /* PROCESS */
+    /* HOW IT WORKS */
 
     .process-heading {
         margin-bottom: 55px;
@@ -1618,22 +1656,24 @@ input {
     }
 
 
-    .logo {
-        gap: 10px;
-    }
-
-
     .logo-mark {
         width: 58px;
 
-        height: 36px;
+        height: 34px;
     }
 
 
     .logo-text {
-        font-size: 24px;
+        font-size: 25px;
 
         letter-spacing: -1px;
+    }
+
+
+    .logo-tagline {
+        font-size: 6px;
+
+        letter-spacing: 1.3px;
     }
 
 
@@ -1649,10 +1689,8 @@ input {
     }
 
 
-    /* HERO */
-
     .hero {
-        padding-top: 55px;
+        padding-top: 35px;
     }
 
 
@@ -1663,19 +1701,12 @@ input {
     }
 
 
-    .hero-eyebrow {
-        font-size: 11px;
-
-        letter-spacing: 2px;
-    }
-
-
     .hero-description {
         font-size: 16px;
     }
 
 
-    /* FORM */
+    /* UPDATE FORM */
 
     .update-form {
         flex-direction: column;
@@ -1693,8 +1724,6 @@ input {
         width: 100%;
     }
 
-
-    /* SECTIONS */
 
     .section-heading h2 {
         font-size: 38px;
@@ -1715,8 +1744,6 @@ input {
         font-size: 19px;
     }
 
-
-    /* LEGISLATION */
 
     .legislation-header h2 {
         font-size: 27px;
@@ -1743,8 +1770,6 @@ input {
         height: 48px;
     }
 
-
-    /* NOTICE */
 
     .notice-inner {
         flex-direction: column;
