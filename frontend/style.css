@@ -16,6 +16,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 108px;
 }
 
 body {
@@ -290,6 +291,8 @@ input {
     align-items: flex-start;
 
     padding-top: 32px;
+    
+    scroll-margin-top: 108px;
 }
 
 
