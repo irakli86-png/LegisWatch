@@ -128,45 +128,32 @@ input {
 ========================================================= */
 
 .logo {
-
     display: flex;
-
     align-items: center;
-
-    gap: 13px;
-
+    gap: 14px;
     height: 100%;
-
     color: #ffffff;
-
-    flex-shrink: 0;
 }
 
-
 .logo-mark {
-
-    width: 74px;
-
-    height: 50px;
-
+    width: 72px;
+    height: 42px;
     display: block;
-
     object-fit: contain;
 }
 
-
 .logo-text {
+    font-family:
+        "Open Sans",
+        "Noto Sans Georgian",
+        Arial,
+        sans-serif;
 
     font-size: 30px;
-
     line-height: 1;
-
-    font-weight: 800;
-
-    letter-spacing: -1.6px;
-
+    font-weight: 700;
+    letter-spacing: -1.4px;
     color: #ffffff;
-
     white-space: nowrap;
 }
 
