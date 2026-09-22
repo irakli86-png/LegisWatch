@@ -8,9 +8,11 @@
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
+
 
 body {
     font-family:
@@ -20,14 +22,18 @@ body {
         sans-serif;
 
     background: #ffffff;
+
     color: #111111;
+
     line-height: 1.6;
 }
+
 
 a {
     color: inherit;
     text-decoration: none;
 }
+
 
 button,
 input {
@@ -41,12 +47,19 @@ input {
 
 :root {
     --black: #111111;
+
     --dark-gray: #333333;
+
     --gray: #666666;
+
     --light-gray: #999999;
+
     --border: #e5e5e5;
+
     --gold: #c8a94b;
+
     --white: #ffffff;
+
     --container: 1280px;
 }
 
@@ -75,19 +88,24 @@ input {
     background: #111111;
 
     position: sticky;
+
     top: 0;
 
     z-index: 1000;
 
     border-top: 1px solid #252525;
+
     border-bottom: 1px solid #252525;
 }
+
 
 .header-inner {
     height: 100%;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 }
 
@@ -98,20 +116,45 @@ input {
 
 .logo {
     display: flex;
+
     align-items: center;
+
+    gap: 14px;
 
     height: 100%;
 
     flex-shrink: 0;
 }
 
-.logo-image {
-    width: 285px;
-    height: auto;
+
+.logo-mark {
+    width: 74px;
+
+    height: 42px;
 
     display: block;
 
     object-fit: contain;
+}
+
+
+.logo-text {
+    font-family:
+        "Open Sans",
+        Arial,
+        sans-serif;
+
+    font-size: 30px;
+
+    line-height: 1;
+
+    font-weight: 700;
+
+    letter-spacing: -1.4px;
+
+    color: #ffffff;
+
+    white-space: nowrap;
 }
 
 
@@ -121,18 +164,22 @@ input {
 
 .main-nav {
     display: flex;
+
     align-items: center;
 
     gap: 42px;
 
     margin-left: auto;
+
     margin-right: auto;
 }
+
 
 .main-nav a {
     position: relative;
 
     font-size: 14px;
+
     font-weight: 400;
 
     letter-spacing: 0.5px;
@@ -144,21 +191,25 @@ input {
     opacity: 0.92;
 }
 
+
 .main-nav a::after {
     content: "";
 
     position: absolute;
 
     left: 0;
+
     bottom: 25px;
 
     width: 0;
+
     height: 2px;
 
     background: var(--gold);
 
     transition: width 0.25s ease;
 }
+
 
 .main-nav a:hover::after,
 .main-nav a.active::after {
@@ -172,6 +223,7 @@ input {
 
 .header-social {
     display: flex;
+
     align-items: center;
 
     gap: 22px;
@@ -179,14 +231,17 @@ input {
     flex-shrink: 0;
 }
 
+
 .header-social a {
     font-size: 16px;
+
     font-weight: 700;
 
     color: #ffffff;
 
     transition: opacity 0.2s ease;
 }
+
 
 .header-social a:hover {
     opacity: 0.5;
@@ -201,10 +256,12 @@ input {
     min-height: 650px;
 
     display: flex;
+
     align-items: center;
 
     padding-top: 10px;
 }
+
 
 .hero-inner {
     display: grid;
@@ -218,21 +275,26 @@ input {
     min-height: 650px;
 }
 
+
 .hero-content {
     padding-right: 20px;
 
     position: relative;
+
     z-index: 2;
 }
 
+
 .gold-line {
     width: 38px;
+
     height: 5px;
 
     background: var(--gold);
 
     margin-bottom: 32px;
 }
+
 
 .hero-eyebrow {
     font-size: 14px;
@@ -245,6 +307,7 @@ input {
 
     margin-bottom: 25px;
 }
+
 
 .hero h1 {
     font-size: clamp(
@@ -265,6 +328,7 @@ input {
 
     max-width: 650px;
 }
+
 
 .hero-description {
     max-width: 570px;
@@ -287,11 +351,14 @@ input {
 
 .update-form {
     display: flex;
+
     align-items: stretch;
 
     width: 100%;
+
     max-width: 620px;
 }
+
 
 .update-form input {
     flex: 1;
@@ -303,6 +370,7 @@ input {
     padding: 0 20px;
 
     border: 1px solid #111111;
+
     border-right: none;
 
     outline: none;
@@ -316,9 +384,11 @@ input {
     font-weight: 300;
 }
 
+
 .update-form input::placeholder {
     color: #999999;
 }
+
 
 .update-form input:focus {
     border-color: var(--gold);
@@ -363,18 +433,24 @@ input {
         color 0.25s ease;
 }
 
+
 .outline-button:hover {
     background: #ffffff;
+
     color: #111111;
 }
 
+
 .outline-button:disabled {
     opacity: 0.55;
+
     cursor: wait;
 }
 
+
 .button-arrow {
     font-size: 22px;
+
     line-height: 1;
 }
 
@@ -416,8 +492,10 @@ input {
     position: relative;
 
     padding-left: 20px;
+
     padding-right: 5px;
 }
+
 
 .law-sketch {
     width: 100%;
@@ -468,10 +546,12 @@ input {
 
 .features {
     border-top: 1px solid var(--border);
+
     border-bottom: 1px solid var(--border);
 
     padding: 55px 0;
 }
+
 
 .features-grid {
     display: grid;
@@ -479,6 +559,7 @@ input {
     grid-template-columns:
         repeat(3, 1fr);
 }
+
 
 .feature {
     display: flex;
@@ -494,16 +575,20 @@ input {
     border-right: 1px solid var(--border);
 }
 
+
 .feature:first-child {
     padding-left: 10px;
 }
+
 
 .feature:last-child {
     border-right: none;
 }
 
+
 .feature-icon {
     width: 48px;
+
     min-width: 48px;
 
     height: 48px;
@@ -515,8 +600,10 @@ input {
     justify-content: center;
 }
 
+
 .feature-icon svg {
     width: 42px;
+
     height: 42px;
 
     fill: none;
@@ -529,6 +616,7 @@ input {
 
     stroke-linejoin: round;
 }
+
 
 .feature h3 {
     font-size: 13px;
@@ -543,6 +631,7 @@ input {
 
     margin-bottom: 9px;
 }
+
 
 .feature p {
     max-width: 290px;
@@ -567,6 +656,7 @@ input {
     background: #ffffff;
 }
 
+
 .about-inner {
     display: grid;
 
@@ -579,13 +669,16 @@ input {
     align-items: start;
 }
 
+
 .section-heading {
     padding-top: 5px;
 }
 
+
 .section-heading .gold-line {
     margin-bottom: 28px;
 }
+
 
 .about-label {
     display: block;
@@ -601,6 +694,7 @@ input {
     margin-bottom: 24px;
 }
 
+
 .section-heading h2 {
     font-size: 52px;
 
@@ -613,11 +707,13 @@ input {
     color: #111111;
 }
 
+
 .about-text {
     max-width: 650px;
 
     padding-top: 8px;
 }
+
 
 .about-lead {
     font-size: 26px !important;
@@ -631,6 +727,7 @@ input {
     margin-bottom: 32px !important;
 }
 
+
 .about-text p {
     font-size: 17px;
 
@@ -642,6 +739,7 @@ input {
 
     margin-bottom: 26px;
 }
+
 
 .about-text p:last-child {
     margin-bottom: 0;
@@ -658,15 +756,18 @@ input {
     background: #f8f8f8;
 }
 
+
 .process-heading {
     max-width: 700px;
 
     margin-bottom: 75px;
 }
 
+
 .process-heading .gold-line {
     margin-bottom: 28px;
 }
+
 
 .process-label {
     display: block;
@@ -682,6 +783,7 @@ input {
     margin-bottom: 24px;
 }
 
+
 .process-heading h2 {
     font-size: 52px;
 
@@ -694,6 +796,7 @@ input {
     color: #111111;
 }
 
+
 .process-grid {
     display: grid;
 
@@ -703,9 +806,11 @@ input {
     gap: 55px;
 }
 
+
 .process-item {
     padding-top: 5px;
 }
+
 
 .process-top {
     display: flex;
@@ -714,6 +819,7 @@ input {
 
     margin-bottom: 35px;
 }
+
 
 .process-number {
     font-size: 13px;
@@ -727,6 +833,7 @@ input {
     white-space: nowrap;
 }
 
+
 .process-line {
     height: 1px;
 
@@ -736,6 +843,7 @@ input {
 
     margin-left: 22px;
 }
+
 
 .process-item h3 {
     font-size: 22px;
@@ -750,6 +858,7 @@ input {
 
     margin-bottom: 18px;
 }
+
 
 .process-item p {
     max-width: 350px;
@@ -772,6 +881,7 @@ input {
     padding: 120px 0;
 }
 
+
 .legislation-header {
     display: flex;
 
@@ -782,9 +892,11 @@ input {
     margin-bottom: 45px;
 }
 
+
 .legislation-header .gold-line {
     margin-bottom: 28px;
 }
+
 
 .legislation-header h2 {
     font-size: 34px;
@@ -796,6 +908,7 @@ input {
     margin-bottom: 8px;
 }
 
+
 .legislation-header p {
     color: #777777;
 
@@ -803,6 +916,7 @@ input {
 
     font-weight: 300;
 }
+
 
 .view-all {
     font-size: 13px;
@@ -817,6 +931,7 @@ input {
 
     transition: opacity 0.2s ease;
 }
+
 
 .view-all:hover {
     opacity: 0.5;
@@ -834,6 +949,7 @@ input {
 
     margin-bottom: 30px;
 }
+
 
 .search-area input {
     flex: 1;
@@ -855,13 +971,16 @@ input {
     font-weight: 300;
 }
 
+
 .search-area input::placeholder {
     color: #999999;
 }
 
+
 .search-area input:focus {
     border-color: #999999;
 }
+
 
 .search-area button {
     width: 130px;
@@ -883,6 +1002,7 @@ input {
     transition: opacity 0.2s ease;
 }
 
+
 .search-area button:hover {
     opacity: 0.85;
 }
@@ -900,9 +1020,11 @@ input {
     margin-bottom: 15px;
 }
 
+
 .results {
     border-top: 1px solid #dddddd;
 }
+
 
 .bill-row {
     min-height: 105px;
@@ -923,12 +1045,15 @@ input {
     transition: background 0.2s ease;
 }
 
+
 .bill-row:hover {
     background: #fafafa;
 }
 
+
 .bill-name {
     padding-left: 15px;
+
     padding-right: 35px;
 
     font-size: 16px;
@@ -939,6 +1064,7 @@ input {
 
     color: #222222;
 }
+
 
 .bill-status {
     font-size: 12px;
@@ -958,6 +1084,7 @@ input {
     white-space: nowrap;
 }
 
+
 .bill-info {
     font-size: 13px;
 
@@ -965,6 +1092,7 @@ input {
 
     white-space: nowrap;
 }
+
 
 .bill-arrow {
     text-align: right;
@@ -976,6 +1104,7 @@ input {
     color: #444444;
 }
 
+
 .bill-arrow a {
     display: inline-block;
 
@@ -983,6 +1112,7 @@ input {
         transform 0.2s ease,
         opacity 0.2s ease;
 }
+
 
 .bill-arrow a:hover {
     transform: translateX(5px);
@@ -1005,11 +1135,13 @@ input {
     border-bottom: 1px solid var(--border);
 }
 
+
 .empty-state h3 {
     font-size: 22px;
 
     margin-bottom: 8px;
 }
+
 
 .empty-state p {
     color: #777777;
@@ -1034,6 +1166,7 @@ input {
     margin-top: 45px;
 }
 
+
 .pagination button {
     border: none;
 
@@ -1050,15 +1183,18 @@ input {
     transition: opacity 0.2s ease;
 }
 
+
 .pagination button:hover:not(:disabled) {
     opacity: 0.5;
 }
+
 
 .pagination button:disabled {
     color: #cccccc;
 
     cursor: default;
 }
+
 
 #pageNumber {
     font-size: 13px;
@@ -1079,6 +1215,7 @@ input {
     border-top: 1px solid var(--border);
 }
 
+
 .notice-inner {
     display: flex;
 
@@ -1089,6 +1226,7 @@ input {
     gap: 20px;
 }
 
+
 .notice-label {
     font-size: 11px;
 
@@ -1098,6 +1236,7 @@ input {
 
     padding: 5px 10px;
 }
+
 
 .notice-inner p {
     font-size: 13px;
@@ -1116,6 +1255,7 @@ input {
     border-top: 1px solid var(--border);
 }
 
+
 .footer-inner {
     display: grid;
 
@@ -1127,17 +1267,20 @@ input {
     align-items: center;
 }
 
+
 .footer-brand {
     display: flex;
 
     flex-direction: column;
 }
 
+
 .footer-brand strong {
     font-size: 22px;
 
     font-weight: 800;
 }
+
 
 .footer-brand span {
     font-size: 12px;
@@ -1147,6 +1290,7 @@ input {
     margin-top: 5px;
 }
 
+
 .footer-nav {
     display: flex;
 
@@ -1155,11 +1299,13 @@ input {
     gap: 25px;
 }
 
+
 .footer-nav a {
     font-size: 11px;
 
     letter-spacing: 1px;
 }
+
 
 .footer-copy {
     text-align: right;
@@ -1180,17 +1326,21 @@ input {
         gap: 25px;
     }
 
+
     .hero h1 {
         font-size: 52px;
     }
+
 
     .hero-description {
         font-size: 17px;
     }
 
+
     .feature {
         padding: 5px 25px;
     }
+
 
     .bill-row {
         grid-template-columns:
@@ -1205,7 +1355,7 @@ input {
 
 
 /* =========================================================
-   TABLET / MOBILE
+   TABLET
 ========================================================= */
 
 @media (max-width: 850px) {
@@ -1226,15 +1376,25 @@ input {
         padding: 20px 0;
     }
 
+
     .header-inner {
         flex-wrap: wrap;
 
         gap: 20px;
     }
 
-    .logo-image {
-        width: 240px;
+
+    .logo-mark {
+        width: 64px;
+
+        height: 38px;
     }
+
+
+    .logo-text {
+        font-size: 27px;
+    }
+
 
     .main-nav {
         order: 3;
@@ -1250,9 +1410,11 @@ input {
         margin: 0;
     }
 
+
     .main-nav a {
         padding: 5px 0;
     }
+
 
     .main-nav a::after {
         bottom: 0;
@@ -1265,15 +1427,18 @@ input {
         padding: 70px 0;
     }
 
+
     .hero-inner {
         grid-template-columns: 1fr;
 
         min-height: auto;
     }
 
+
     .hero-content {
         padding-right: 0;
     }
+
 
     .hero-visual {
         height: auto;
@@ -1283,11 +1448,13 @@ input {
         padding-left: 0;
     }
 
+
     .law-sketch {
         width: 100%;
 
         transform: none;
     }
+
 
     .hero h1 {
         font-size: 58px;
@@ -1309,6 +1476,7 @@ input {
         gap: 35px;
     }
 
+
     .feature {
         border-right: none;
 
@@ -1316,6 +1484,7 @@ input {
 
         padding: 0 0 30px;
     }
+
 
     .feature:last-child {
         border-bottom: none;
@@ -1339,6 +1508,7 @@ input {
         margin-bottom: 55px;
     }
 
+
     .process-grid {
         grid-template-columns: 1fr;
 
@@ -1356,6 +1526,7 @@ input {
         gap: 25px;
     }
 
+
     .bill-row {
         grid-template-columns:
             1fr
@@ -1366,6 +1537,7 @@ input {
         gap: 12px;
     }
 
+
     .bill-name {
         grid-column: 1 / -1;
 
@@ -1374,17 +1546,20 @@ input {
         padding-right: 0;
     }
 
+
     .bill-status {
         grid-column: 1;
 
         grid-row: 2;
     }
 
+
     .bill-info {
         grid-column: 1;
 
         grid-row: 3;
     }
+
 
     .bill-arrow {
         grid-column: 2;
@@ -1407,9 +1582,11 @@ input {
         text-align: center;
     }
 
+
     .footer-brand {
         align-items: center;
     }
+
 
     .footer-copy {
         text-align: center;
@@ -1428,19 +1605,37 @@ input {
         width: calc(100% - 30px);
     }
 
+
     .header-social {
         display: none;
     }
 
-    .logo-image {
-        width: 210px;
+
+    .logo {
+        gap: 10px;
     }
+
+
+    .logo-mark {
+        width: 58px;
+
+        height: 36px;
+    }
+
+
+    .logo-text {
+        font-size: 24px;
+
+        letter-spacing: -1px;
+    }
+
 
     .main-nav {
         justify-content: flex-start;
 
         gap: 20px;
     }
+
 
     .main-nav a {
         font-size: 12px;
@@ -1453,17 +1648,20 @@ input {
         padding-top: 55px;
     }
 
+
     .hero h1 {
         font-size: 45px;
 
         letter-spacing: -2px;
     }
 
+
     .hero-eyebrow {
         font-size: 11px;
 
         letter-spacing: 2px;
     }
+
 
     .hero-description {
         font-size: 16px;
@@ -1478,9 +1676,11 @@ input {
         gap: 10px;
     }
 
+
     .update-form input {
         border-right: 1px solid #111111;
     }
+
 
     .update-form .outline-button {
         width: 100%;
@@ -1493,13 +1693,16 @@ input {
         font-size: 38px;
     }
 
+
     .process-section {
         padding: 90px 0;
     }
 
+
     .process-heading h2 {
         font-size: 38px;
     }
+
 
     .process-item h3 {
         font-size: 19px;
@@ -1514,15 +1717,18 @@ input {
         letter-spacing: 3px;
     }
 
+
     .search-area {
         flex-direction: column;
 
         gap: 10px;
     }
 
+
     .search-area input {
         border-right: 1px solid #dddddd;
     }
+
 
     .search-area button {
         width: 100%;
