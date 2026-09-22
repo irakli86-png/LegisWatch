@@ -116,14 +116,25 @@ input {
 
 .logo {
     display: flex;
-
     align-items: center;
-
     gap: 14px;
-
     height: 100%;
-
     flex-shrink: 0;
+}
+
+.logo-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+
+.logo-tagline {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2.2px;
+    color: #b8b8b8;
+    white-space: nowrap;
 }
 
 
