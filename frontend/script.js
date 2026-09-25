@@ -49,6 +49,9 @@ const pageNumber =
    SETTINGS
 ========================================================= */
 
+const API_URL =
+    "https://legiswatch-production.up.railway.app";
+
 const limit = 5;
 
 let currentPage = 1;
@@ -57,139 +60,80 @@ let currentSearch = "";
 
 
 /* =========================================================
-   TEMPORARY LEGISLATION DATA
-========================================================= */
-
-const legislation = [
-
-    {
-        bill_id: 32366,
-        bill_name:
-            "„დაგროვებითი პენსიის შესახებ“ საქართველოს კანონში ცვლილების შეტანის თაობაზე",
-        bill_type:
-            "საქართველოს კანონის პროექტი",
-        registration_number:
-            "364/3-XIმპ",
-        registration_date:
-            "09-09-2026"
-    },
-
-    {
-        bill_id: 32371,
-        bill_name:
-            "საქართველოს ინტელექტუალური საკუთრების შესახებ კანონში ცვლილების შეტანის თაობაზე",
-        bill_type:
-            "საქართველოს კანონის პროექტი",
-        registration_number:
-            "365/2-XIმპ",
-        registration_date:
-            "09-09-2026"
-    },
-
-    {
-        bill_id: 32372,
-        bill_name:
-            "საქართველოს სისხლის სამართლის კოდექსში ცვლილების შეტანის თაობაზე",
-        bill_type:
-            "საქართველოს კანონის პროექტი",
-        registration_number:
-            "366/2-XIმპ",
-        registration_date:
-            "10-09-2026"
-    },
-
-    {
-        bill_id: 32375,
-        bill_name:
-            "საქართველოს ადმინისტრაციულ სამართალდარღვევათა კოდექსში ცვლილების შეტანის თაობაზე",
-        bill_type:
-            "საქართველოს კანონის პროექტი",
-        registration_number:
-            "367/2-XIმპ",
-        registration_date:
-            "10-09-2026"
-    },
-
-    {
-        bill_id: 32380,
-        bill_name:
-            "„პერსონალურ მონაცემთა დაცვის შესახებ“ საქართველოს კანონში ცვლილების შეტანის თაობაზე",
-        bill_type:
-            "საქართველოს კანონის პროექტი",
-        registration_number:
-            "368/2-XIმპ",
-        registration_date:
-            "11-09-2026"
-    }
-
-];
-
-
-/* =========================================================
    LOAD LEGISLATION
 ========================================================= */
 
-function loadBills() {
+async function loadBills() {
 
-    let filteredBills =
-        legislation;
+    const offset =
+        (currentPage - 1) * limit;
 
 
-    /* SEARCH */
+    /* API URL */
 
-    if (currentSearch !== "") {
+    const url =
+        `${API_URL}/bills` +
+        `?limit=${limit}` +
+        `&offset=${offset}` +
+        `&search=${encodeURIComponent(currentSearch)}`;
 
-        filteredBills =
-            legislation.filter(
-                function (bill) {
 
-                    return bill.bill_name
-                        .toLowerCase()
-                        .includes(
-                            currentSearch.toLowerCase()
-                        );
+    /* LOADING */
 
-                }
+    results.style.display = "none";
+
+    emptyState.style.display = "none";
+
+    resultCount.textContent =
+        "იტვირთება...";
+
+
+    try {
+
+        const response =
+            await fetch(url);
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Failed to load legislation."
             );
+
+        }
+
+
+        const bills =
+            await response.json();
+
+
+        renderBills(bills);
 
     }
 
 
-    /* PAGINATION */
+    catch (error) {
 
-    const start =
-        (currentPage - 1) * limit;
-
-    const end =
-        start + limit;
-
-    const pageBills =
-        filteredBills.slice(
-            start,
-            end
-        );
+        console.error(error);
 
 
-    renderBills(
-        pageBills,
-        filteredBills.length
-    );
+        results.innerHTML = "";
 
+        results.style.display = "none";
 
-    pageNumber.textContent =
-        currentPage;
+        emptyState.style.display = "block";
 
+        emptyState.innerHTML = `
+            <h3>Unable to load legislation</h3>
+            <p>
+                Please try again later.
+            </p>
+        `;
 
-    /* PREVIOUS */
+        resultCount.textContent =
+            "0 შედეგი";
 
-    previousButton.disabled =
-        currentPage === 1;
-
-
-    /* NEXT */
-
-    nextButton.disabled =
-        end >= filteredBills.length;
+    }
 
 }
 
@@ -198,10 +142,7 @@ function loadBills() {
    RENDER LEGISLATION
 ========================================================= */
 
-function renderBills(
-    bills,
-    totalResults
-) {
+function renderBills(bills) {
 
     results.innerHTML = "";
 
@@ -210,14 +151,27 @@ function renderBills(
 
     if (bills.length === 0) {
 
-        results.style.display =
-            "none";
+        results.style.display = "none";
 
-        emptyState.style.display =
-            "block";
+        emptyState.style.display = "block";
+
+        emptyState.innerHTML = `
+            <h3>No legislation found</h3>
+            <p>
+                Try another search.
+            </p>
+        `;
 
         resultCount.textContent =
             "0 შედეგი";
+
+        previousButton.disabled =
+            currentPage === 1;
+
+        nextButton.disabled = true;
+
+        pageNumber.textContent =
+            currentPage;
 
         return;
 
@@ -226,11 +180,9 @@ function renderBills(
 
     /* RESULTS */
 
-    emptyState.style.display =
-        "none";
+    emptyState.style.display = "none";
 
-    results.style.display =
-        "block";
+    results.style.display = "block";
 
 
     const start =
@@ -241,8 +193,10 @@ function renderBills(
 
 
     resultCount.textContent =
-        `ნაჩვენებია ${start}–${end} ${totalResults}-დან`;
+        `ნაჩვენებია ${start}–${end}`;
 
+
+    /* RENDER EACH BILL */
 
     bills.forEach(
         function (bill) {
@@ -327,6 +281,26 @@ function renderBills(
 
         }
     );
+
+
+    /* PAGINATION */
+
+    pageNumber.textContent =
+        currentPage;
+
+
+    previousButton.disabled =
+        currentPage === 1;
+
+
+    /*
+        თუ ზუსტად limit რაოდენობის
+        ჩანაწერი დაბრუნდა, შეიძლება
+        შემდეგი გვერდიც არსებობდეს.
+    */
+
+    nextButton.disabled =
+        bills.length < limit;
 
 }
 
@@ -464,7 +438,7 @@ checkButton.addEventListener(
 
             const response =
                 await fetch(
-                    "https://legiswatch-production.up.railway.app/check-updates",
+                    `${API_URL}/check-updates`,
                     {
                         method: "POST",
 
@@ -499,8 +473,8 @@ checkButton.addEventListener(
             statusText.textContent =
                 "Updates checked successfully. Please check your email.";
 
-
         }
+
 
         catch (error) {
 
