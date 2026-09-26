@@ -203,7 +203,7 @@ function renderBills(bills) {
 
 
             const billUrl =
-                `https://info.parliament.ge/#law-drafting/${bill.bill_id}`;
+                `bill?id=${bill.bill_id}`;
 
 
             const row =
