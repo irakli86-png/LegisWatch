@@ -1259,7 +1259,8 @@ input {
 --------------------------------------------------------- */
 
 .bill-back {
-    margin-bottom: 120px;
+    margin-bottom: 0px;
+    padding-bottom: 50px;
 }
 
 
@@ -1271,7 +1272,7 @@ input {
     width: 64%;
     max-width: none;
 
-    margin-bottom: 80px;
+    margin-bottom: 32px;
 }
 
 .bill-details-header h1 {
