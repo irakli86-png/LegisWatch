@@ -69,16 +69,12 @@ async function loadBills() {
         (currentPage - 1) * limit;
 
 
-    /* API URL */
-
     const url =
         `${API_URL}/bills` +
         `?limit=${limit}` +
         `&offset=${offset}` +
         `&search=${encodeURIComponent(currentSearch)}`;
 
-
-    /* LOADING */
 
     results.style.display = "none";
 
@@ -147,8 +143,6 @@ function renderBills(bills) {
     results.innerHTML = "";
 
 
-    /* NO RESULTS */
-
     if (bills.length === 0) {
 
         results.style.display = "none";
@@ -178,8 +172,6 @@ function renderBills(bills) {
     }
 
 
-    /* RESULTS */
-
     emptyState.style.display = "none";
 
     results.style.display = "block";
@@ -196,11 +188,8 @@ function renderBills(bills) {
         `ნაჩვენებია ${start}–${end}`;
 
 
-    /* RENDER EACH BILL */
-
     bills.forEach(
         function (bill) {
-
 
             const billUrl =
                 `bill?id=${bill.bill_id}`;
@@ -262,8 +251,7 @@ function renderBills(bills) {
 
                     <a
                         href="${billUrl}"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        aria-label="View bill details"
                     >
 
                         →
@@ -275,6 +263,38 @@ function renderBills(bills) {
             `;
 
 
+            /*
+             * მთელი row clickable
+             */
+
+            row.addEventListener(
+                "click",
+                function (event) {
+
+                    /*
+                     * თუ მომხმარებელმა პირდაპირ
+                     * arrow link-ს დააჭირა,
+                     * ჩვეულებრივაც იმუშავებს.
+                     */
+
+                    if (
+                        event.target.closest(
+                            "a"
+                        )
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    window.location.href =
+                        billUrl;
+
+                }
+            );
+
+
             results.appendChild(
                 row
             );
@@ -283,21 +303,11 @@ function renderBills(bills) {
     );
 
 
-    /* PAGINATION */
-
     pageNumber.textContent =
         currentPage;
 
-
     previousButton.disabled =
         currentPage === 1;
-
-
-    /*
-        თუ ზუსტად limit რაოდენობის
-        ჩანაწერი დაბრუნდა, შეიძლება
-        შემდეგი გვერდიც არსებობდეს.
-    */
 
     nextButton.disabled =
         bills.length < limit;
@@ -390,9 +400,6 @@ checkButton.addEventListener(
         const email =
             emailInput.value.trim();
 
-
-        /* CHECK EMAIL */
-
         if (email === "") {
 
             statusText.textContent =
@@ -403,9 +410,6 @@ checkButton.addEventListener(
             return;
 
         }
-
-
-        /* SIMPLE EMAIL CHECK */
 
         if (
             !email.includes("@") ||
@@ -421,9 +425,6 @@ checkButton.addEventListener(
 
         }
 
-
-        /* LOADING */
-
         checkButton.disabled =
             true;
 
@@ -432,7 +433,6 @@ checkButton.addEventListener(
 
         statusText.textContent =
             "Checking parliamentary data...";
-
 
         try {
 
@@ -467,8 +467,6 @@ checkButton.addEventListener(
 
             }
 
-
-            /* SUCCESS */
 
             statusText.textContent =
                 "Updates checked successfully. Please check your email.";
