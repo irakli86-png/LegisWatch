@@ -1754,3 +1754,342 @@ input {
     }
 
 }
+
+/* =========================================================
+   BILL DETAILS PAGE
+========================================================= */
+
+.bill-details-page {
+    padding: 90px 0 120px;
+    min-height: calc(100vh - 108px);
+    background: #ffffff;
+}
+
+.bill-back {
+    display: inline-block;
+    margin-bottom: 55px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: #555555;
+    transition: opacity 0.2s ease;
+}
+
+.bill-back:hover {
+    opacity: 0.5;
+}
+
+
+/* =========================================================
+   BILL HEADER
+========================================================= */
+
+.bill-details-header {
+    max-width: 1000px;
+    margin-bottom: 75px;
+}
+
+.bill-details-header .gold-line {
+    width: 45px;
+    height: 2px;
+    background: var(--gold);
+    margin-bottom: 28px;
+}
+
+.bill-type {
+    display: inline-block;
+    margin-bottom: 22px;
+    padding: 7px 14px;
+    border-radius: 20px;
+    background: #f1f1f1;
+    color: #666666;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.bill-details-header h1 {
+    max-width: 1000px;
+    margin: 0;
+    font-size: 48px;
+    line-height: 1.12;
+    font-weight: 800;
+    letter-spacing: -1.8px;
+    color: #111111;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.bill-description-section {
+    max-width: 900px;
+    padding-bottom: 65px;
+    border-bottom: 1px solid var(--border);
+}
+
+.bill-description-section h2,
+.bill-person-section h2 {
+    margin-bottom: 25px;
+    font-size: 13px;
+    line-height: 1.4;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #111111;
+}
+
+.bill-description-section p {
+    margin: 0;
+    font-size: 19px;
+    line-height: 1.85;
+    font-weight: 300;
+    color: #555555;
+}
+
+
+/* =========================================================
+   BILL INFORMATION
+========================================================= */
+
+.bill-information {
+    padding: 60px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.bill-information-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 45px 80px;
+    max-width: 1000px;
+}
+
+.bill-field {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bill-field-label {
+    font-size: 10px;
+    line-height: 1.4;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #999999;
+}
+
+.bill-field-value {
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
+    color: #222222;
+}
+
+
+/* =========================================================
+   INITIATOR / AUTHOR / PACKAGE
+========================================================= */
+
+.bill-person-section {
+    max-width: 900px;
+    padding: 55px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.bill-person-section p {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.8;
+    font-weight: 300;
+    color: #555555;
+}
+
+
+/* =========================================================
+   OFFICIAL LINK
+========================================================= */
+
+.bill-official-link {
+    padding-top: 55px;
+}
+
+.bill-official-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid #222222;
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: #222222;
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+.bill-official-link a:hover {
+    opacity: 0.5;
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.bill-error {
+    max-width: 700px;
+    padding: 70px 0;
+}
+
+.bill-error h2 {
+    margin-bottom: 15px;
+    font-size: 32px;
+    font-weight: 700;
+    color: #111111;
+}
+
+.bill-error p {
+    margin-bottom: 30px;
+    font-size: 16px;
+    color: #777777;
+}
+
+.bill-error a {
+    display: inline-block;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #222222;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: #222222;
+}
+
+
+/* =========================================================
+   BILL DETAILS — TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .bill-details-page {
+        padding: 70px 0 90px;
+    }
+
+    .bill-details-header {
+        margin-bottom: 60px;
+    }
+
+    .bill-details-header h1 {
+        font-size: 42px;
+    }
+
+    .bill-description-section {
+        max-width: 100%;
+    }
+
+    .bill-information-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .bill-person-section {
+        max-width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   BILL DETAILS — MOBILE
+========================================================= */
+
+@media (max-width: 550px) {
+
+    .bill-details-page {
+        padding: 50px 0 70px;
+    }
+
+    .bill-back {
+        margin-bottom: 40px;
+        font-size: 11px;
+    }
+
+    .bill-details-header {
+        margin-bottom: 50px;
+    }
+
+    .bill-details-header .gold-line {
+        margin-bottom: 22px;
+    }
+
+    .bill-type {
+        margin-bottom: 18px;
+        font-size: 11px;
+        padding: 6px 12px;
+    }
+
+    .bill-details-header h1 {
+        font-size: 34px;
+        line-height: 1.12;
+        letter-spacing: -1.2px;
+    }
+
+    .bill-description-section {
+        padding-bottom: 45px;
+    }
+
+    .bill-description-section h2,
+    .bill-person-section h2 {
+        font-size: 12px;
+        letter-spacing: 2.5px;
+        margin-bottom: 20px;
+    }
+
+    .bill-description-section p {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .bill-information {
+        padding: 45px 0;
+    }
+
+    .bill-information-grid {
+        gap: 30px;
+    }
+
+    .bill-field-label {
+        font-size: 9px;
+        letter-spacing: 1.7px;
+    }
+
+    .bill-field-value {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .bill-person-section {
+        padding: 45px 0;
+    }
+
+    .bill-person-section p {
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .bill-official-link {
+        padding-top: 45px;
+    }
+
+    .bill-official-link a {
+        font-size: 10px;
+        letter-spacing: 1.2px;
+    }
+
+    .bill-error h2 {
+        font-size: 26px;
+    }
+
+}
