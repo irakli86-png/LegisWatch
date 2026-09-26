@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;500;600;700;800&display=swap');
+
+
 /* =========================================================
    LEGISWATCH
    NAMARI STYLE
@@ -1261,7 +1264,7 @@ input {
 
 
 /* =========================================================
-   BILL BACK
+   BACK
 ========================================================= */
 
 .bill-back {
@@ -1292,7 +1295,7 @@ input {
 .bill-details-header {
     max-width: 1080px;
 
-    margin-bottom: 58px;
+    margin-bottom: 52px;
 }
 
 .bill-details-header .gold-line {
@@ -1308,7 +1311,7 @@ input {
 .bill-type {
     display: inline-block;
 
-    margin-bottom: 22px;
+    margin-bottom: 20px;
 
     padding: 7px 14px;
 
@@ -1320,7 +1323,6 @@ input {
 
     font-family:
         "Noto Sans Georgian",
-        "Open Sans",
         Arial,
         sans-serif;
 
@@ -1332,27 +1334,26 @@ input {
 }
 
 .bill-details-header h1 {
-    max-width: 1080px;
+    max-width: 1050px;
 
     margin: 0;
 
     font-family:
         "Noto Sans Georgian",
-        "Open Sans",
         Arial,
         sans-serif;
 
     font-size: clamp(
-        38px,
-        4vw,
-        58px
+        40px,
+        3.4vw,
+        50px
     );
 
-    line-height: 1.18;
+    line-height: 1.25;
 
     font-weight: 700;
 
-    letter-spacing: -1px;
+    letter-spacing: -0.8px;
 
     color: #111111;
 }
@@ -1398,7 +1399,6 @@ input {
 
     font-family:
         "Noto Sans Georgian",
-        "Open Sans",
         Arial,
         sans-serif;
 
@@ -1413,7 +1413,7 @@ input {
 
 
 /* =========================================================
-   BILL INFORMATION
+   INFORMATION
 ========================================================= */
 
 .bill-information {
@@ -1461,7 +1461,6 @@ input {
 .bill-field-value {
     font-family:
         "Noto Sans Georgian",
-        "Open Sans",
         Arial,
         sans-serif;
 
@@ -1498,7 +1497,6 @@ input {
 
     font-family:
         "Noto Sans Georgian",
-        "Open Sans",
         Arial,
         sans-serif;
 
@@ -1610,7 +1608,7 @@ input {
 
 
 /* =========================================================
-   TABLET
+   BILL DETAILS — TABLET
 ========================================================= */
 
 @media (max-width: 1100px) {
@@ -1646,7 +1644,7 @@ input {
 
 
 /* =========================================================
-   TABLET / MOBILE
+   BILL DETAILS — TABLET / MOBILE
 ========================================================= */
 
 @media (max-width: 850px) {
@@ -1866,13 +1864,13 @@ input {
     }
 
     .bill-details-header {
-        margin-bottom: 48px;
+        margin-bottom: 45px;
     }
 
     .bill-details-header h1 {
         font-size: 42px;
 
-        line-height: 1.2;
+        line-height: 1.25;
     }
 
     .bill-description-section {
@@ -1902,6 +1900,8 @@ input {
         width: calc(100% - 30px);
     }
 
+
+    /* HEADER */
 
     .header-social {
         display: none;
@@ -2038,7 +2038,7 @@ input {
     }
 
     .bill-details-header {
-        margin-bottom: 42px;
+        margin-bottom: 40px;
     }
 
     .bill-details-header .gold-line {
@@ -2058,9 +2058,9 @@ input {
     .bill-details-header h1 {
         font-size: 31px;
 
-        line-height: 1.22;
+        line-height: 1.28;
 
-        letter-spacing: -0.5px;
+        letter-spacing: -0.4px;
     }
 
     .bill-description-section {
