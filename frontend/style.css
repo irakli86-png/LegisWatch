@@ -1736,8 +1736,8 @@ input {
 }
 
 .logo-mark {
-    width: 58px;
-    height: 34px;
+    width: 68px;
+    height: 40px;
 }
 
 .logo-info {
@@ -1746,13 +1746,13 @@ input {
 }
 
 .logo-text {
-    font-size: 25px;
+    font-size: 29px;
     letter-spacing: -1px;
 }
 
 .logo-tagline {
-    font-size: 6px;
-    letter-spacing: 1.3px;
+    font-size: 7px;
+    letter-spacing: 1.4px;
 }
 
 .header-social {
