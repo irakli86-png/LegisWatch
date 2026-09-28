@@ -1708,22 +1708,31 @@ input {
 
 .site-header {
     height: auto;
-    min-height: 135px;
-    padding: 18px 0 12px;
+    min-height: 100px;
+    padding: 18px 0;
 }
 
 .header-inner {
     height: auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 14px;
+    align-items: flex-start;
+    gap: 20px;
 }
 
 .logo {
     gap: 10px;
     height: auto;
     min-width: 0;
+}
+
+.main-nav {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
+    gap: 22px;
+    flex-wrap: nowrap;
 }
 
 .logo-mark {
