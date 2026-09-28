@@ -1644,5 +1644,48 @@ input {
     .bill-official-link {
         padding-top: 22px;
     }
+/* MOBILE HERO FIX */
 
+.hero {
+    padding-top: 40px;
+    padding-bottom: 55px;
+}
+
+.hero-inner {
+    grid-template-columns: 1fr;
+}
+
+.hero-content {
+    width: 100%;
+    padding-right: 0;
+}
+
+.hero h1 {
+    font-size: 43px;
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+    margin-bottom: 38px;
+}
+
+.hero-description {
+    width: 100%;
+    max-width: 100%;
+    font-size: 17px;
+    line-height: 1.9;
+    margin-bottom: 45px;
+}
+
+.hero-visual {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    padding: 0;
+}
+
+.law-sketch {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    transform: none;
+}
 }
