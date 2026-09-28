@@ -1731,7 +1731,7 @@ input {
     margin: 0;
     display: flex;
     justify-content: flex-start;
-    gap: 22px;
+    gap: 16px;
     flex-wrap: nowrap;
 }
 
@@ -1769,7 +1769,7 @@ input {
 }
 
 .main-nav a {
-    font-size: 10px;
+    font-size: 12px;
     padding: 6px 0;
     white-space: nowrap;
     letter-spacing: 0.3px;
