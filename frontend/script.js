@@ -46,6 +46,17 @@ const pageNumber =
 
 
 /* =========================================================
+   LANGUAGE BUTTONS
+========================================================= */
+
+const languageGeorgian =
+    document.getElementById("languageGeorgian");
+
+const languageEnglish =
+    document.getElementById("languageEnglish");
+
+
+/* =========================================================
    SETTINGS
 ========================================================= */
 
@@ -57,6 +68,669 @@ const limit = 5;
 let currentPage = 1;
 
 let currentSearch = "";
+
+let currentLanguage =
+    localStorage.getItem("legiswatchLanguage") || "en";
+
+
+/* =========================================================
+   TRANSLATIONS
+========================================================= */
+
+const translations = {
+
+    ka: {
+
+        header: {
+
+            tagline:
+                "STAY INFORMED. TRACK WHAT MATTERS."
+
+        },
+
+
+        nav: {
+
+            home:
+                "მთავარი",
+
+            legislation:
+                "კანონმდებლობა",
+
+            about:
+                "ჩვენ შესახებ",
+
+            howItWorks:
+                "როგორ მუშაობს"
+
+        },
+
+
+        hero: {
+
+            title: `
+                საკანონმდებლო<br>
+                ინიციატივები<br>
+                <span style="color: #bf0603;">LIVE</span> რეჟიმში
+            `,
+
+            description:
+                "LegisWatch გაძლევთ შესაძლებლობას რეალურ დროში აკონტროლოთ ახალი საკანონმდებლო ინიციატივები.",
+
+            emailPlaceholder:
+                "შეიყვანე ელფოსტა",
+
+            checkUpdates:
+                "განახლებების შემოწმება"
+
+        },
+
+
+        features: {
+
+            track: {
+
+                title:
+                    "თვალი ადევნე ახალ ინიციატივებს",
+
+                description:
+                    "თვალი ადევნე საქართველოს პარლამენტში რეგისტრირებულ ახალ საკანონმდებლო ინიციატივებს."
+
+            },
+
+
+            realtime: {
+
+                title:
+                    "განახლებები რეალურ დროში",
+
+                description:
+                    "მიიღე პარლამენტთან დაკავშირებული უახლესი ინფორმაცია ერთ სივრცეში."
+
+            },
+
+
+            open: {
+
+                title:
+                    "ღია და გამჭვირვალე",
+
+                description:
+                    "მიიღე ოფიციალურ საკანონმდებლო ინფორმაციაზე წვდომა მარტივი და გასაგები ინტერფეისით."
+
+            }
+
+        },
+
+
+        about: {
+
+            label:
+                "LEGISWATCH-ის შესახებ",
+
+            title:
+                "კანონმდებლობა მარტივად და გასაგებად.",
+
+            lead:
+                "LegisWatch საშუალებას გაძლევს, მარტივად ადევნო თვალი საქართველოს საკანონმდებლო ინიციატივებს.",
+
+            description:
+                "პლატფორმა აკვირდება საქართველოს პარლამენტში ახლად რეგისტრირებულ საკანონმდებლო ინიციატივებს და ოფიციალურ ინფორმაციას ერთ, მარტივად და გასაგებად წარმოდგენილ სივრცეში აერთიანებს.",
+
+            follow:
+                "სხვადასხვა გვერდისა და დოკუმენტის ცალ-ცალკე ძიების ნაცვლად, მომხმარებლებს შეუძლიათ სწრაფად მიიღონ ინფორმაცია უახლესი ინიციატივების შესახებ და თვალი ადევნონ მათ ცვლილებებს."
+
+        },
+
+
+        process: {
+
+            label:
+                "როგორ მუშაობს",
+
+            title:
+                "პარლამენტიდან შენს ეკრანზე",
+
+
+            monitor: {
+
+                title:
+                    "მონიტორინგი",
+
+                description:
+                    "LegisWatch ამოწმებს პარლამენტის ოფიციალურ ინფორმაციას და აკვირდება ახლად რეგისტრირებულ საკანონმდებლო ინიციატივებს."
+
+            },
+
+
+            organize: {
+
+                title:
+                    "ორგანიზება",
+
+                description:
+                    "საკანონმდებლო ინფორმაცია გროვდება და მარტივ, გასაგებ ფორმატში ორგანიზდება."
+
+            },
+
+
+            follow: {
+
+                title:
+                    "თვალყურის დევნება",
+
+                description:
+                    "მომხმარებლებს შეუძლიათ სწრაფად და მარტივად იპოვონ საინტერესო ინიციატივები და მიიღონ ინფორმაცია მათ შესახებ ავტომატურ რეჟიმში."
+
+            }
+
+        },
+
+
+        legislation: {
+
+            title:
+                "უახლესი საკანონმდებლო ინიციატივები",
+
+            description:
+                "საქართველოს პარლამენტის უახლესი კანონპროექტები და განახლებები.",
+
+            viewAll:
+                "ყველა საკანონმდებლო ინიციატივა →",
+
+            searchPlaceholder:
+                "მოძებნე საკანონმდებლო ინიციატივა...",
+
+            searchButton:
+                "ძიება",
+
+            resultCount:
+                "0 შედეგი",
+
+            emptyTitle:
+                "საკანონმდებლო ინიციატივა ვერ მოიძებნა",
+
+            emptyDescription:
+                "სცადე სხვა საძიებო სიტყვა.",
+
+            previous:
+                "← წინა",
+
+            next:
+                "შემდეგი →"
+
+        },
+
+
+        testNotice: {
+
+            label:
+                "ტესტირების რეჟიმი",
+
+            description:
+                "LegisWatch ამჟამად მუშაობს განვითარების და ტესტირების გარემოში."
+
+        },
+
+
+        footer: {
+
+            tagline:
+                "საქართველოს საკანონმდებლო მონიტორინგი",
+
+            home:
+                "მთავარი",
+
+            legislation:
+                "კანონმდებლობა",
+
+            about:
+                "ჩვენ შესახებ"
+
+        },
+
+
+        messages: {
+
+            loading:
+                "იტვირთება...",
+
+            unableToLoad:
+                "საკანონმდებლო ინიციატივების ჩატვირთვა ვერ მოხერხდა",
+
+            tryAgainLater:
+                "გთხოვთ, სცადოთ მოგვიანებით.",
+
+            noResults:
+                "საკანონმდებლო ინიციატივა ვერ მოიძებნა",
+
+            tryAnotherSearch:
+                "სცადე სხვა საძიებო სიტყვა.",
+
+            showing:
+                "ნაჩვენებია",
+
+            pleaseEnterEmail:
+                "გთხოვთ, შეიყვანოთ ელფოსტის მისამართი.",
+
+            invalidEmail:
+                "გთხოვთ, შეიყვანოთ ელფოსტის სწორი მისამართი.",
+
+            checking:
+                "მოწმდება...",
+
+            checkingData:
+                "პარლამენტის მონაცემები მოწმდება...",
+
+            updateSuccess:
+                "განახლებები წარმატებით შემოწმდა. გთხოვთ, შეამოწმოთ ელფოსტა.",
+
+            updateError:
+                "განახლებების შემოწმება ვერ მოხერხდა. გთხოვთ, სცადოთ თავიდან.",
+
+            somethingWentWrong:
+                "რაღაც შეცდომა მოხდა.",
+
+            checkUpdates:
+                "განახლებების შემოწმება"
+
+        }
+
+    },
+
+
+    en: {
+
+        header: {
+
+            tagline:
+                "STAY INFORMED. TRACK WHAT MATTERS."
+
+        },
+
+
+        nav: {
+
+            home:
+                "HOME",
+
+            legislation:
+                "LEGISLATION",
+
+            about:
+                "ABOUT",
+
+            howItWorks:
+                "HOW IT WORKS"
+
+        },
+
+
+        hero: {
+
+            title: `
+                GEORGIAN<br>
+                LEGISLATION<br>
+                TRACKED <span style="color: #bf0603;">LIVE</span>
+            `,
+
+            description:
+                "LegisWatch helps you track new laws, draft bills and parliamentary updates from the Parliament of Georgia — clearly, simply, and in real time.",
+
+            emailPlaceholder:
+                "Enter your email",
+
+            checkUpdates:
+                "CHECK FOR UPDATES"
+
+        },
+
+
+        features: {
+
+            track: {
+
+                title:
+                    "TRACK NEW LEGISLATION",
+
+                description:
+                    "Follow newly registered legislative initiatives from the Parliament of Georgia."
+
+            },
+
+
+            realtime: {
+
+                title:
+                    "REAL-TIME UPDATES",
+
+                description:
+                    "Keep track of the latest parliamentary information in one place."
+
+            },
+
+
+            open: {
+
+                title:
+                    "OPEN & TRANSPARENT",
+
+                description:
+                    "Access official legislative information through a clear and simple interface."
+
+            }
+
+        },
+
+
+        about: {
+
+            label:
+                "ABOUT LEGISWATCH",
+
+            title:
+                "LEGISLATION<br>MADE CLEAR.",
+
+            lead:
+                "LegisWatch makes Georgian legislation easier to follow.",
+
+            description:
+                "The platform monitors newly registered legislative initiatives and presents official parliamentary information in one clear and accessible place.",
+
+            follow:
+                "Instead of searching through different pages and documents, users can quickly discover recent initiatives and follow their development."
+
+        },
+
+
+        process: {
+
+            label:
+                "HOW IT WORKS",
+
+            title:
+                "FROM PARLIAMENT<br>TO YOUR SCREEN.",
+
+
+            monitor: {
+
+                title:
+                    "MONITOR",
+
+                description:
+                    "LegisWatch checks official parliamentary information for newly registered legislative initiatives."
+
+            },
+
+
+            organize: {
+
+                title:
+                    "ORGANIZE",
+
+                description:
+                    "Legislative information is collected and organized into a simple and readable format."
+
+            },
+
+
+            follow: {
+
+                title:
+                    "FOLLOW",
+
+                description:
+                    "Users can quickly discover legislation and open the official parliamentary source."
+
+            }
+
+        },
+
+
+        legislation: {
+
+            title:
+                "RECENT LEGISLATION",
+
+            description:
+                "Latest bills and updates from the Parliament of Georgia.",
+
+            viewAll:
+                "VIEW ALL LEGISLATION →",
+
+            searchPlaceholder:
+                "Search legislation...",
+
+            searchButton:
+                "SEARCH",
+
+            resultCount:
+                "0 results",
+
+            emptyTitle:
+                "No legislation found",
+
+            emptyDescription:
+                "Try another search.",
+
+            previous:
+                "← PREVIOUS",
+
+            next:
+                "NEXT →"
+
+        },
+
+
+        testNotice: {
+
+            label:
+                "TEST MODE",
+
+            description:
+                "LegisWatch is currently operating in a development and testing environment."
+
+        },
+
+
+        footer: {
+
+            tagline:
+                "Georgian Legislative Monitoring",
+
+            home:
+                "HOME",
+
+            legislation:
+                "LEGISLATION",
+
+            about:
+                "ABOUT"
+
+        },
+
+
+        messages: {
+
+            loading:
+                "Loading...",
+
+            unableToLoad:
+                "Unable to load legislation",
+
+            tryAgainLater:
+                "Please try again later.",
+
+            noResults:
+                "No legislation found",
+
+            tryAnotherSearch:
+                "Try another search.",
+
+            showing:
+                "Showing",
+
+            pleaseEnterEmail:
+                "Please enter your email address.",
+
+            invalidEmail:
+                "Please enter a valid email address.",
+
+            checking:
+                "CHECKING...",
+
+            checkingData:
+                "Checking parliamentary data...",
+
+            updateSuccess:
+                "Updates checked successfully. Please check your email.",
+
+            updateError:
+                "Unable to check updates. Please try again.",
+
+            somethingWentWrong:
+                "Something went wrong.",
+
+            checkUpdates:
+                "CHECK FOR UPDATES"
+
+        }
+
+    }
+
+};
+
+
+/* =========================================================
+   TRANSLATION HELPER
+========================================================= */
+
+function t(key) {
+
+    const parts =
+        key.split(".");
+
+    let value =
+        translations[currentLanguage];
+
+    for (const part of parts) {
+
+        value =
+            value?.[part];
+
+    }
+
+    return value ?? key;
+}
+
+
+/* =========================================================
+   APPLY TRANSLATIONS
+========================================================= */
+
+function applyTranslations() {
+
+    document.documentElement.lang =
+        currentLanguage;
+
+
+    document
+        .querySelectorAll("[data-i18n]")
+        .forEach(function (element) {
+
+            const key =
+                element.getAttribute(
+                    "data-i18n"
+                );
+
+            element.innerHTML =
+                t(key);
+
+        });
+
+
+    document
+        .querySelectorAll("[data-i18n-placeholder]")
+        .forEach(function (element) {
+
+            const key =
+                element.getAttribute(
+                    "data-i18n-placeholder"
+                );
+
+            element.placeholder =
+                t(key);
+
+        });
+
+
+    languageGeorgian.classList.toggle(
+        "active",
+        currentLanguage === "ka"
+    );
+
+
+    languageEnglish.classList.toggle(
+        "active",
+        currentLanguage === "en"
+    );
+
+}
+
+
+/* =========================================================
+   CHANGE LANGUAGE
+========================================================= */
+
+function setLanguage(language) {
+
+    if (
+        language !== "ka" &&
+        language !== "en"
+    ) {
+
+        return;
+
+    }
+
+
+    currentLanguage =
+        language;
+
+
+    localStorage.setItem(
+        "legiswatchLanguage",
+        currentLanguage
+    );
+
+
+    applyTranslations();
+
+}
+
+
+/* =========================================================
+   LANGUAGE BUTTONS
+========================================================= */
+
+languageGeorgian.addEventListener(
+    "click",
+    function () {
+
+        setLanguage("ka");
+
+    }
+);
+
+
+languageEnglish.addEventListener(
+    "click",
+    function () {
+
+        setLanguage("en");
+
+    }
+);
 
 
 /* =========================================================
@@ -76,12 +750,16 @@ async function loadBills() {
         `&search=${encodeURIComponent(currentSearch)}`;
 
 
-    results.style.display = "none";
+    results.style.display =
+        "none";
 
-    emptyState.style.display = "none";
+
+    emptyState.style.display =
+        "none";
+
 
     resultCount.textContent =
-        "იტვირთება...";
+        t("messages.loading");
 
 
     try {
@@ -106,28 +784,38 @@ async function loadBills() {
         renderBills(bills);
 
     }
-
-
     catch (error) {
 
         console.error(error);
 
 
-        results.innerHTML = "";
+        results.innerHTML =
+            "";
 
-        results.style.display = "none";
 
-        emptyState.style.display = "block";
+        results.style.display =
+            "none";
+
+
+        emptyState.style.display =
+            "block";
+
 
         emptyState.innerHTML = `
-            <h3>Unable to load legislation</h3>
+            <h3>
+                ${t("messages.unableToLoad")}
+            </h3>
+
             <p>
-                Please try again later.
+                ${t("messages.tryAgainLater")}
             </p>
         `;
 
+
         resultCount.textContent =
-            "0 შედეგი";
+            currentLanguage === "ka"
+                ? "0 შედეგი"
+                : "0 results";
 
     }
 
@@ -140,52 +828,72 @@ async function loadBills() {
 
 function renderBills(bills) {
 
-    results.innerHTML = "";
+    results.innerHTML =
+        "";
 
 
     if (bills.length === 0) {
 
-        results.style.display = "none";
+        results.style.display =
+            "none";
 
-        emptyState.style.display = "block";
+
+        emptyState.style.display =
+            "block";
+
 
         emptyState.innerHTML = `
-            <h3>No legislation found</h3>
+            <h3>
+                ${t("messages.noResults")}
+            </h3>
+
             <p>
-                Try another search.
+                ${t("messages.tryAnotherSearch")}
             </p>
         `;
 
+
         resultCount.textContent =
-            "0 შედეგი";
+            currentLanguage === "ka"
+                ? "0 შედეგი"
+                : "0 results";
+
 
         previousButton.disabled =
             currentPage === 1;
 
-        nextButton.disabled = true;
+
+        nextButton.disabled =
+            true;
+
 
         pageNumber.textContent =
             currentPage;
+
 
         return;
 
     }
 
 
-    emptyState.style.display = "none";
+    emptyState.style.display =
+        "none";
 
-    results.style.display = "block";
+
+    results.style.display =
+        "block";
 
 
     const start =
         (currentPage - 1) * limit + 1;
+
 
     const end =
         start + bills.length - 1;
 
 
     resultCount.textContent =
-        `ნაჩვენებია ${start}–${end}`;
+        `${t("messages.showing")} ${start}–${end}`;
 
 
     bills.forEach(
@@ -263,19 +971,13 @@ function renderBills(bills) {
             `;
 
 
-            /*
-             * მთელი row clickable
-             */
+            /* =================================================
+               WHOLE ROW CLICKABLE
+            ================================================= */
 
             row.addEventListener(
                 "click",
                 function (event) {
-
-                    /*
-                     * თუ მომხმარებელმა პირდაპირ
-                     * arrow link-ს დააჭირა,
-                     * ჩვეულებრივაც იმუშავებს.
-                     */
 
                     if (
                         event.target.closest(
@@ -306,8 +1008,10 @@ function renderBills(bills) {
     pageNumber.textContent =
         currentPage;
 
+
     previousButton.disabled =
         currentPage === 1;
+
 
     nextButton.disabled =
         bills.length < limit;
@@ -326,7 +1030,10 @@ searchButton.addEventListener(
         currentSearch =
             searchInput.value.trim();
 
-        currentPage = 1;
+
+        currentPage =
+            1;
+
 
         loadBills();
 
@@ -347,7 +1054,10 @@ searchInput.addEventListener(
             currentSearch =
                 searchInput.value.trim();
 
-            currentPage = 1;
+
+            currentPage =
+                1;
+
 
             loadBills();
 
@@ -367,6 +1077,7 @@ nextButton.addEventListener(
 
         currentPage++;
 
+
         loadBills();
 
     }
@@ -380,6 +1091,7 @@ previousButton.addEventListener(
         if (currentPage > 1) {
 
             currentPage--;
+
 
             loadBills();
 
@@ -400,16 +1112,20 @@ checkButton.addEventListener(
         const email =
             emailInput.value.trim();
 
+
         if (email === "") {
 
             statusText.textContent =
-                "Please enter your email address.";
+                t("messages.pleaseEnterEmail");
+
 
             emailInput.focus();
+
 
             return;
 
         }
+
 
         if (
             !email.includes("@") ||
@@ -417,22 +1133,28 @@ checkButton.addEventListener(
         ) {
 
             statusText.textContent =
-                "Please enter a valid email address.";
+                t("messages.invalidEmail");
+
 
             emailInput.focus();
+
 
             return;
 
         }
 
+
         checkButton.disabled =
             true;
 
+
         buttonText.textContent =
-            "CHECKING...";
+            t("messages.checking");
+
 
         statusText.textContent =
-            "Checking parliamentary data...";
+            t("messages.checkingData");
+
 
         try {
 
@@ -462,32 +1184,32 @@ checkButton.addEventListener(
 
                 throw new Error(
                     data.detail ||
-                    "Something went wrong."
+                    t(
+                        "messages.somethingWentWrong"
+                    )
                 );
 
             }
 
 
             statusText.textContent =
-                "Updates checked successfully. Please check your email.";
+                t("messages.updateSuccess");
 
         }
-
-
         catch (error) {
 
             console.error(error);
 
+
             statusText.textContent =
-                "Unable to check updates. Please try again.";
+                t("messages.updateError");
 
         }
-
-
         finally {
 
             buttonText.textContent =
-                "CHECK FOR UPDATES";
+                t("messages.checkUpdates");
+
 
             checkButton.disabled =
                 false;
@@ -534,6 +1256,13 @@ function escapeHTML(value) {
         );
 
 }
+
+
+/* =========================================================
+   INITIAL LANGUAGE
+========================================================= */
+
+setLanguage(currentLanguage);
 
 
 /* =========================================================

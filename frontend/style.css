@@ -2154,3 +2154,484 @@ input {
     }
 
 }
+
+/* =====================================================
+   LANGUAGE SWITCHER
+===================================================== */
+
+.language-switcher {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 28px;
+    white-space: nowrap;
+}
+
+.language-switcher span {
+    color: #777;
+    font-size: 13px;
+    line-height: 1;
+}
+
+.language-switcher button {
+    appearance: none;
+    -webkit-appearance: none;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #bdbdbd;
+
+    font-family: "Open Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+
+    padding: 3px 0;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.language-switcher button:hover {
+    color: #ffffff;
+}
+
+.language-switcher button.active {
+    color: #ffffff;
+}
+
+
+/* =====================================================
+   GEORGIAN HERO TYPOGRAPHY
+===================================================== */
+
+html[lang="ka"] .hero h1 {
+    font-family:
+        "Noto Sans Georgian",
+        sans-serif;
+
+    font-size: 56px;
+    line-height: 0.98;
+
+    font-weight: 800;
+
+    letter-spacing: -1.8px;
+
+    max-width: 720px;
+}
+
+
+/* =====================================================
+   GEORGIAN HERO DESCRIPTION
+===================================================== */
+
+html[lang="ka"] .hero-description {
+    font-family:
+        "Noto Sans Georgian",
+        sans-serif;
+
+    font-size: 17px;
+    line-height: 1.65;
+
+    max-width: 650px;
+}
+
+
+/* =====================================================
+   GEORGIAN HERO FORM
+===================================================== */
+
+html[lang="ka"] .update-form input {
+    font-family:
+        "Noto Sans Georgian",
+        sans-serif;
+}
+
+html[lang="ka"] .update-form button {
+    font-family:
+        "Noto Sans Georgian",
+        sans-serif;
+}
+
+
+/* =====================================================
+   GEORGIAN SECTION HEADINGS
+===================================================== */
+
+html[lang="ka"] .about-section h2,
+html[lang="ka"] .process-section h2,
+html[lang="ka"] .legislation-section h2 {
+    font-family:
+        "Noto Sans Georgian",
+        sans-serif;
+
+    letter-spacing: -1px;
+}
+
+
+/* =====================================================
+   GEORGIAN NAVIGATION
+===================================================== */
+
+html[lang="ka"] .main-nav a {
+    font-family:
+        "Noto Sans Georgian",
+        sans-serif;
+}
+
+
+/* =====================================================
+   GEORGIAN FEATURE / PROCESS HEADINGS
+===================================================== */
+
+html[lang="ka"] .feature h3,
+html[lang="ka"] .process-item h3 {
+    font-family:
+        "Noto Sans Georgian",
+        sans-serif;
+}
+
+
+/* =====================================================
+   GEORGIAN GENERAL TEXT
+===================================================== */
+
+html[lang="ka"] .about-text,
+html[lang="ka"] .process-item p,
+html[lang="ka"] .feature p,
+html[lang="ka"] .legislation-section p {
+    font-family:
+        "Noto Sans Georgian",
+        sans-serif;
+}
+
+/* =====================================================
+   HERO TITLE - FINAL GEORGIAN SPACING
+===================================================== */
+
+html[lang="ka"] .hero h1 {
+    font-size: 54px;
+    line-height: 1.02;
+    letter-spacing: -1.2px;
+}
+
+
+/* Space between LIVE and Georgian text */
+
+html[lang="ka"] .hero h1 span {
+    display: inline-block;
+    margin-right: 14px;
+    letter-spacing: -1px;
+}
+
+
+/* Keep LIVE რეჟიმში together */
+
+html[lang="ka"] .hero h1 {
+    white-space: normal;
+}
+
+/* =====================================================
+   HERO TITLE - GEORGIAN FINAL POLISH
+===================================================== */
+
+html[lang="ka"] .hero h1 {
+    font-size: 54px;
+    line-height: 1.04;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+
+/* LIVE spacing */
+
+html[lang="ka"] .hero h1 span {
+    display: inline-block;
+    margin-right: 16px;
+    font-weight: 800;
+}
+
+/* =====================================================
+   HEADER - FINAL POLISH
+===================================================== */
+
+.site-header {
+    position: relative;
+    z-index: 100;
+}
+
+
+/* Main header layout */
+
+.header-inner {
+    display: flex;
+    align-items: center;
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.logo-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-text {
+    line-height: 1;
+}
+
+.logo-tagline {
+    margin-top: 5px;
+    line-height: 1;
+}
+
+
+/* =====================================================
+   MAIN NAVIGATION
+===================================================== */
+
+.main-nav {
+    display: flex;
+    align-items: center;
+
+    margin-left: auto;
+    margin-right: 34px;
+
+    gap: 38px;
+}
+
+.main-nav a {
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   LANGUAGE SWITCHER
+===================================================== */
+
+.language-switcher {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    margin: 0 24px 0 0;
+
+    padding: 0;
+
+    white-space: nowrap;
+}
+
+.language-switcher span {
+    color: #777;
+
+    font-family:
+        "Open Sans",
+        sans-serif;
+
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.language-switcher button {
+    appearance: none;
+    -webkit-appearance: none;
+
+    border: 0;
+    outline: 0;
+
+    background: transparent;
+
+    color: #8d8d8d;
+
+    font-family:
+        "Noto Sans Georgian",
+        "Open Sans",
+        sans-serif;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    line-height: 1;
+
+    padding: 0;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.language-switcher button:hover {
+    color: #ffffff;
+}
+
+.language-switcher button.active {
+    color: #ffffff;
+}
+
+
+/* =====================================================
+   SOCIAL ICONS
+===================================================== */
+
+.header-social {
+    display: flex;
+    align-items: center;
+
+    gap: 22px;
+
+    flex-shrink: 0;
+}
+
+.header-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 16px;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-family:
+        "Open Sans",
+        sans-serif;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    line-height: 1;
+
+    opacity: 0.9;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+.header-social a:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   HEADER BALANCE
+===================================================== */
+
+.logo-mark {
+    flex-shrink: 0;
+}
+
+.header-social {
+    margin-left: 0;
+}
+
+
+/* =====================================================
+   GEORGIAN HEADER NAVIGATION
+===================================================== */
+
+html[lang="ka"] .main-nav a {
+    font-family:
+        "Noto Sans Georgian",
+        sans-serif;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   DESKTOP HEADER WIDTH
+===================================================== */
+
+@media (min-width: 1100px) {
+
+    .header-inner {
+        min-height: 82px;
+    }
+
+    .main-nav {
+        gap: 42px;
+    }
+
+    .language-switcher {
+        margin-right: 26px;
+    }
+
+    .header-social {
+        gap: 22px;
+    }
+
+}
+
+
+/* =====================================================
+   SMALLER DESKTOP
+===================================================== */
+
+@media (max-width: 1100px) {
+
+    .main-nav {
+        gap: 22px;
+        margin-right: 22px;
+    }
+
+    .language-switcher {
+        margin-right: 18px;
+    }
+
+    .header-social {
+        gap: 16px;
+    }
+
+}
+
+/* =====================================================
+   LEGISWATCH — GEORGIAN HERO / COMPACT
+   ===================================================== */
+
+html[lang="ka"] .hero h1 {
+    font-family: "Noto Sans Georgian", sans-serif;
+
+    font-size: 58px;
+    line-height: 0.98;
+
+    font-weight: 700;
+
+    letter-spacing: -1.2px;
+
+    font-stretch: condensed;
+
+    max-width: 680px;
+}
+
+html[lang="ka"] .hero h1 span {
+    font-family: "Open Sans", sans-serif;
+
+    display: inline-block;
+
+    margin-right: 20px;
+
+    font-size: 58px;
+    font-weight: 800;
+
+    letter-spacing: -2px;
+}
